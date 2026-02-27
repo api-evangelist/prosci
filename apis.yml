@@ -1,0 +1,50 @@
+name: Prosci
+description: Prosci is a global leader in change management research, methodology, and solutions. They provide change management training, certification, tools, and consulting services to help organizations successfully implement change initiatives.
+image: https://www.prosci.com/images/prosci-logo.png
+created: 2024-01-20 00:00:00+00:00
+modified: 2024-01-20 00:00:00+00:00
+url: https://www.prosci.com
+specificationVersion: '0.18'
+apis:
+- name: Prosci Change Management API
+  description: API for accessing Prosci change management methodologies, tools, and resources
+  image: https://www.prosci.com/images/prosci-logo.png
+  humanURL: https://www.prosci.com
+  baseURL: https://api.prosci.com
+  tags:
+  - Change Management
+  - Training
+  - Methodology
+  - ADKAR
+  properties:
+  - type: Documentation
+    url: https://www.prosci.com/resources
+  - type: OpenAPI
+    url: https://api.prosci.com/openapi.json
+  - type: Authentication
+    url: https://api.prosci.com/auth
+  contact:
+  - FN: Prosci Support
+    email: support@prosci.com
+    url: https://www.prosci.com/contact
+common:
+- type: Portal
+  url: https://www.prosci.com/portal
+- type: Training
+  url: https://www.prosci.com/solutions/training-programs
+- type: Certification
+  url: https://www.prosci.com/solutions/prosci-certification
+- type: Tools
+  url: https://www.prosci.com/solutions/tools-and-assessments
+- type: Research
+  url: https://www.prosci.com/resources/articles
+- type: Blog
+  url: https://www.prosci.com/blog
+- type: Terms of Service
+  url: https://www.prosci.com/terms
+- type: Privacy Policy
+  url: https://www.prosci.com/privacy
+maintainers:
+- FN: Prosci
+  email: info@prosci.com
+  url: https://www.prosci.com
