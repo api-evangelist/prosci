@@ -1,0 +1,226 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prosci": "https://api.prosci.com/vocab#",
+    "id": "@id",
+    "type": "@type",
+
+    "ChangeProject": "prosci:ChangeProject",
+    "AdkarAssessment": "prosci:AdkarAssessment",
+    "PctAssessment": "prosci:PctAssessment",
+    "ChangePlan": "prosci:ChangePlan",
+    "Stakeholder": "prosci:Stakeholder",
+    "RiskAssessment": "prosci:RiskAssessment",
+    "TrainingProgram": "prosci:TrainingProgram",
+    "Enrollment": "prosci:Enrollment",
+    "MaturityAssessment": "prosci:MaturityAssessment",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "prosci:status",
+    "startDate": "schema:startDate",
+    "endDate": "schema:endDate",
+    "targetCompletionDate": "prosci:targetCompletionDate",
+    "actualCompletionDate": "prosci:actualCompletionDate",
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified",
+    "email": "schema:email",
+    "url": "schema:url",
+
+    "changeType": {
+      "@id": "prosci:changeType",
+      "@type": "xsd:string"
+    },
+    "scope": {
+      "@id": "prosci:scope",
+      "@type": "xsd:string"
+    },
+    "phase": {
+      "@id": "prosci:phase",
+      "@type": "xsd:string"
+    },
+    "riskLevel": {
+      "@id": "prosci:riskLevel",
+      "@type": "xsd:string"
+    },
+    "impactedEmployeeCount": {
+      "@id": "prosci:impactedEmployeeCount",
+      "@type": "xsd:integer"
+    },
+
+    "sponsor": {
+      "@id": "prosci:sponsor",
+      "@type": "schema:Person"
+    },
+    "changeManager": {
+      "@id": "prosci:changeManager",
+      "@type": "schema:Person"
+    },
+    "impactedGroups": {
+      "@id": "prosci:impactedGroups",
+      "@container": "@list"
+    },
+
+    "projectId": {
+      "@id": "prosci:projectId",
+      "@type": "xsd:string"
+    },
+    "stakeholderId": {
+      "@id": "prosci:stakeholderId",
+      "@type": "xsd:string"
+    },
+    "assessmentDate": {
+      "@id": "prosci:assessmentDate",
+      "@type": "xsd:date"
+    },
+    "awareness": {
+      "@id": "prosci:awareness",
+      "@type": "prosci:AdkarDimension"
+    },
+    "desire": {
+      "@id": "prosci:desire",
+      "@type": "prosci:AdkarDimension"
+    },
+    "knowledge": {
+      "@id": "prosci:knowledge",
+      "@type": "prosci:AdkarDimension"
+    },
+    "ability": {
+      "@id": "prosci:ability",
+      "@type": "prosci:AdkarDimension"
+    },
+    "reinforcement": {
+      "@id": "prosci:reinforcement",
+      "@type": "prosci:AdkarDimension"
+    },
+    "overallScore": {
+      "@id": "prosci:overallScore",
+      "@type": "xsd:float"
+    },
+    "barrierPoint": {
+      "@id": "prosci:barrierPoint",
+      "@type": "xsd:string"
+    },
+    "score": {
+      "@id": "prosci:score",
+      "@type": "xsd:float"
+    },
+
+    "leadership": {
+      "@id": "prosci:leadership",
+      "@type": "prosci:PctDimension"
+    },
+    "projectManagement": {
+      "@id": "prosci:projectManagement",
+      "@type": "prosci:PctDimension"
+    },
+    "changeManagement": {
+      "@id": "prosci:changeManagement",
+      "@type": "prosci:PctDimension"
+    },
+    "overallHealth": {
+      "@id": "prosci:overallHealth",
+      "@type": "xsd:string"
+    },
+
+    "planType": {
+      "@id": "prosci:planType",
+      "@type": "xsd:string"
+    },
+    "targetAudience": {
+      "@id": "prosci:targetAudience",
+      "@container": "@list"
+    },
+    "activities": {
+      "@id": "prosci:activities",
+      "@container": "@list"
+    },
+    "owner": {
+      "@id": "prosci:owner",
+      "@type": "schema:Person"
+    },
+
+    "role": {
+      "@id": "prosci:role",
+      "@type": "xsd:string"
+    },
+    "impactLevel": {
+      "@id": "prosci:impactLevel",
+      "@type": "xsd:string"
+    },
+    "influenceLevel": {
+      "@id": "prosci:influenceLevel",
+      "@type": "xsd:string"
+    },
+    "supportLevel": {
+      "@id": "prosci:supportLevel",
+      "@type": "xsd:string"
+    },
+    "department": {
+      "@id": "schema:department",
+      "@type": "xsd:string"
+    },
+
+    "organizationalAttributes": {
+      "@id": "prosci:organizationalAttributes",
+      "@type": "prosci:OrganizationalRiskAttributes"
+    },
+    "changeCharacteristics": {
+      "@id": "prosci:changeCharacteristics",
+      "@type": "prosci:ChangeCharacteristics"
+    },
+    "overallRiskScore": {
+      "@id": "prosci:overallRiskScore",
+      "@type": "xsd:float"
+    },
+    "mitigationStrategies": {
+      "@id": "prosci:mitigationStrategies",
+      "@container": "@list"
+    },
+
+    "programType": {
+      "@id": "prosci:programType",
+      "@type": "xsd:string"
+    },
+    "format": {
+      "@id": "prosci:format",
+      "@type": "xsd:string"
+    },
+    "durationDays": {
+      "@id": "prosci:durationDays",
+      "@type": "xsd:integer"
+    },
+    "certificationLevel": {
+      "@id": "prosci:certificationLevel",
+      "@type": "xsd:string"
+    },
+
+    "overallLevel": {
+      "@id": "prosci:overallLevel",
+      "@type": "xsd:integer"
+    },
+    "leadershipCompetency": {
+      "@id": "prosci:leadershipCompetency",
+      "@type": "prosci:MaturityDimension"
+    },
+    "applicationCompetency": {
+      "@id": "prosci:applicationCompetency",
+      "@type": "prosci:MaturityDimension"
+    },
+    "competencyDevelopment": {
+      "@id": "prosci:competencyDevelopment",
+      "@type": "prosci:MaturityDimension"
+    },
+    "standardization": {
+      "@id": "prosci:standardization",
+      "@type": "prosci:MaturityDimension"
+    },
+    "socialization": {
+      "@id": "prosci:socialization",
+      "@type": "prosci:MaturityDimension"
+    },
+
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  }
+}

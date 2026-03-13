@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.prosci.com/schemas/change-project.json",
+  "title": "Prosci Change Project",
+  "description": "Schema for a change management project managed using Prosci's methodology. A change project represents an organizational change initiative with associated stakeholders, assessments, and change plans.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the project"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the change project"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the change initiative including objectives and expected outcomes"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "active",
+        "completed",
+        "on-hold",
+        "cancelled"
+      ],
+      "description": "Current lifecycle status of the project"
+    },
+    "changeType": {
+      "type": "string",
+      "enum": [
+        "process",
+        "technology",
+        "organizational",
+        "cultural",
+        "merger-acquisition",
+        "strategic"
+      ],
+      "description": "Category of organizational change"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "department",
+        "division",
+        "organization",
+        "enterprise"
+      ],
+      "description": "Organizational scope of the change initiative"
+    },
+    "sponsor": {
+      "type": "object",
+      "description": "Executive sponsor responsible for championing the change",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the sponsor"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the executive sponsor"
+        },
+        "title": {
+          "type": "string",
+          "description": "Job title of the sponsor"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the sponsor"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "changeManager": {
+      "type": "object",
+      "description": "Change management practitioner leading the change effort",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the change manager"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the change manager"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the change manager"
+        },
+        "certificationLevel": {
+          "type": "string",
+          "enum": [
+            "certified-change-practitioner",
+            "certified-change-management-professional",
+            "certified-instructor"
+          ],
+          "description": "Prosci certification level held by the change manager"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "impactedGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the impacted group"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of people in the group"
+          },
+          "impactLevel": {
+            "type": "string",
+            "enum": [
+              "low",
+              "moderate",
+              "high",
+              "critical"
+            ],
+            "description": "Degree to which this group is impacted by the change"
+          },
+          "department": {
+            "type": "string",
+            "description": "Department or business unit"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "description": "Groups of employees impacted by the change"
+    },
+    "impactedEmployeeCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of employees impacted by the change"
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "critical"
+      ],
+      "description": "Overall assessed risk level of the change initiative"
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "preparing-for-change",
+        "managing-change",
+        "reinforcing-change"
+      ],
+      "description": "Current phase in Prosci's 3-Phase Process"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Project start date"
+    },
+    "targetCompletionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Target completion date for the change initiative"
+    },
+    "actualCompletionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual completion date, if completed"
+    },
+    "organizationId": {
+      "type": "string",
+      "description": "Identifier of the parent organization"
+    },
+    "organizationName": {
+      "type": "string",
+      "description": "Name of the parent organization"
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key objectives of the change initiative"
+    },
+    "successMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the metric"
+          },
+          "target": {
+            "type": "string",
+            "description": "Target value for the metric"
+          },
+          "current": {
+            "type": "string",
+            "description": "Current value of the metric"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement"
+          }
+        },
+        "required": [
+          "name",
+          "target"
+        ]
+      },
+      "description": "Metrics used to measure the success of the change"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorization and search"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the project was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the project was last updated"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "status",
+    "changeType"
+  ]
+}

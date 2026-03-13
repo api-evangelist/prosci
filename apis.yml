@@ -1,13 +1,21 @@
 name: Prosci
-description: Prosci is a global leader in change management research, methodology, and solutions. They provide change management training, certification, tools, and consulting services to help organizations successfully implement change initiatives.
+description: >-
+  Prosci is a global leader in change management research, methodology, and
+  solutions. They provide change management training, certification, tools,
+  and consulting services to help organizations successfully implement change
+  initiatives.
 image: https://www.prosci.com/images/prosci-logo.png
 created: 2024-01-20 00:00:00+00:00
-modified: 2024-01-20 00:00:00+00:00
+modified: '2026-03-04'
 url: https://www.prosci.com
 specificationVersion: '0.18'
 apis:
 - name: Prosci Change Management API
-  description: API for accessing Prosci change management methodologies, tools, and resources
+  description: >-
+    API for managing organizational change initiatives using Prosci's
+    research-based change management methodology, including change projects,
+    ADKAR assessments, PCT assessments, stakeholder analysis, change plans,
+    risk assessments, and training programs.
   image: https://www.prosci.com/images/prosci-logo.png
   humanURL: https://www.prosci.com
   baseURL: https://api.prosci.com
@@ -16,11 +24,16 @@ apis:
   - Training
   - Methodology
   - ADKAR
+  - PCT
+  - Stakeholders
+  - Risk Assessment
   properties:
   - type: Documentation
     url: https://www.prosci.com/resources
   - type: OpenAPI
     url: https://api.prosci.com/openapi.json
+  - type: OpenAPI
+    url: openapi/prosci-change-management-openapi.yml
   - type: Authentication
     url: https://api.prosci.com/auth
   contact:
@@ -44,7 +57,12 @@ common:
   url: https://www.prosci.com/terms
 - type: Privacy Policy
   url: https://www.prosci.com/privacy
+- type: JSON-LD
+  url: json-ld/prosci-context.jsonld
+- type: JSONSchema
+  url: json-schema/prosci-adkar-assessment-schema.json
+- type: JSONSchema
+  url: json-schema/prosci-change-project-schema.json
 maintainers:
-- FN: Prosci
-  email: info@prosci.com
-  url: https://www.prosci.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

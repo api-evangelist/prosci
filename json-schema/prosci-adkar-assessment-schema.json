@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.prosci.com/schemas/adkar-assessment.json",
+  "title": "Prosci ADKAR Assessment",
+  "description": "Schema for an ADKAR assessment based on Prosci's ADKAR Model, measuring individual or group change readiness across five sequential dimensions: Awareness, Desire, Knowledge, Ability, and Reinforcement.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the assessment"
+    },
+    "projectId": {
+      "type": "string",
+      "description": "Identifier of the associated change project"
+    },
+    "stakeholderId": {
+      "type": "string",
+      "description": "Identifier of the assessed stakeholder or group"
+    },
+    "stakeholderName": {
+      "type": "string",
+      "description": "Name of the assessed stakeholder or group"
+    },
+    "groupId": {
+      "type": "string",
+      "description": "Identifier of the impacted group"
+    },
+    "assessmentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the assessment was conducted"
+    },
+    "awareness": {
+      "$ref": "#/$defs/adkarDimension",
+      "description": "Awareness of the need for change - understanding why the change is necessary"
+    },
+    "desire": {
+      "$ref": "#/$defs/adkarDimension",
+      "description": "Desire to participate and support the change"
+    },
+    "knowledge": {
+      "$ref": "#/$defs/adkarDimension",
+      "description": "Knowledge of how to change - understanding required skills and behaviors"
+    },
+    "ability": {
+      "$ref": "#/$defs/adkarDimension",
+      "description": "Ability to implement required skills and behaviors on a day-to-day basis"
+    },
+    "reinforcement": {
+      "$ref": "#/$defs/adkarDimension",
+      "description": "Reinforcement to sustain the change and prevent regression"
+    },
+    "overallScore": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Average score across all five ADKAR dimensions"
+    },
+    "barrierPoint": {
+      "type": "string",
+      "enum": [
+        "awareness",
+        "desire",
+        "knowledge",
+        "ability",
+        "reinforcement",
+        "none"
+      ],
+      "description": "The first ADKAR element scoring below the threshold (typically 3), indicating the primary barrier to change adoption. The ADKAR model is sequential, so barriers must be resolved in order."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or observations from the assessor"
+    },
+    "assessedBy": {
+      "type": "string",
+      "description": "Name or identifier of the person who conducted the assessment"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the assessment was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the assessment was last updated"
+    }
+  },
+  "required": [
+    "id",
+    "projectId",
+    "assessmentDate",
+    "awareness",
+    "desire",
+    "knowledge",
+    "ability",
+    "reinforcement"
+  ],
+  "$defs": {
+    "adkarDimension": {
+      "type": "object",
+      "title": "ADKAR Dimension",
+      "description": "Score and qualitative details for a single ADKAR dimension",
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Numeric score from 1 (low readiness) to 5 (high readiness). Scores of 3 or below typically indicate a barrier point requiring targeted intervention."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Qualitative notes explaining the score"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Recommended corrective actions to improve this dimension"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Observable evidence supporting the assigned score"
+        }
+      },
+      "required": [
+        "score"
+      ]
+    }
+  }
+}

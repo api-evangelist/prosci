@@ -1,0 +1,1880 @@
+openapi: 3.1.0
+info:
+  title: Prosci Change Management API
+  description: >-
+    API for managing organizational change initiatives using Prosci's
+    research-based change management methodology. Provides access to change
+    projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments,
+    stakeholder analyses, change plans, and training resources.
+  version: 1.0.0
+  contact:
+    name: Prosci Support
+    email: support@prosci.com
+    url: https://www.prosci.com/contact
+  license:
+    name: Proprietary
+    url: https://www.prosci.com/terms
+  termsOfService: https://www.prosci.com/terms
+servers:
+  - url: https://api.prosci.com/v1
+    description: Production server
+paths:
+  /projects:
+    get:
+      operationId: listProjects
+      summary: List change projects
+      description: >-
+        Retrieves a paginated list of change management projects for the
+        authenticated organization.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - name: status
+          in: query
+          description: Filter projects by status
+          schema:
+            type: string
+            enum:
+              - planning
+              - active
+              - completed
+              - on-hold
+              - cancelled
+        - name: sponsorId
+          in: query
+          description: Filter projects by executive sponsor identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of change projects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      operationId: createProject
+      summary: Create a change project
+      description: Creates a new change management project.
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '201':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /projects/{projectId}:
+    get:
+      operationId: getProject
+      summary: Get a change project
+      description: Retrieves a specific change management project by identifier.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      responses:
+        '200':
+          description: The requested change project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateProject
+      summary: Update a change project
+      description: Updates an existing change management project.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdate'
+      responses:
+        '200':
+          description: Project updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteProject
+      summary: Delete a change project
+      description: Deletes a change management project and associated data.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      responses:
+        '204':
+          description: Project deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/adkar-assessments:
+    get:
+      operationId: listAdkarAssessments
+      summary: List ADKAR assessments
+      description: >-
+        Retrieves ADKAR assessments for a specific project. ADKAR stands for
+        Awareness, Desire, Knowledge, Ability, and Reinforcement.
+      tags:
+        - ADKAR Assessments
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - name: stakeholderId
+          in: query
+          description: Filter assessments by stakeholder identifier
+          schema:
+            type: string
+        - name: groupId
+          in: query
+          description: Filter assessments by impacted group identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of ADKAR assessments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AdkarAssessment'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createAdkarAssessment
+      summary: Create an ADKAR assessment
+      description: >-
+        Creates a new ADKAR assessment for a project, evaluating an individual
+        or group across the five ADKAR dimensions.
+      tags:
+        - ADKAR Assessments
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdkarAssessmentCreate'
+      responses:
+        '201':
+          description: ADKAR assessment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdkarAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/adkar-assessments/{assessmentId}:
+    get:
+      operationId: getAdkarAssessment
+      summary: Get an ADKAR assessment
+      description: Retrieves a specific ADKAR assessment by identifier.
+      tags:
+        - ADKAR Assessments
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/assessmentIdParam'
+      responses:
+        '200':
+          description: The requested ADKAR assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdkarAssessment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateAdkarAssessment
+      summary: Update an ADKAR assessment
+      description: Updates an existing ADKAR assessment.
+      tags:
+        - ADKAR Assessments
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/assessmentIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdkarAssessmentCreate'
+      responses:
+        '200':
+          description: ADKAR assessment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdkarAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/pct-assessments:
+    get:
+      operationId: listPctAssessments
+      summary: List PCT assessments
+      description: >-
+        Retrieves Prosci Change Triangle (PCT) assessments for a project,
+        evaluating Leadership/Sponsorship, Project Management, and Change
+        Management dimensions.
+      tags:
+        - PCT Assessments
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A paginated list of PCT assessments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PctAssessment'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createPctAssessment
+      summary: Create a PCT assessment
+      description: Creates a new Prosci Change Triangle assessment for a project.
+      tags:
+        - PCT Assessments
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PctAssessmentCreate'
+      responses:
+        '201':
+          description: PCT assessment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PctAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/stakeholders:
+    get:
+      operationId: listStakeholders
+      summary: List stakeholders
+      description: >-
+        Retrieves stakeholders and impacted groups associated with a change
+        project.
+      tags:
+        - Stakeholders
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - name: role
+          in: query
+          description: Filter stakeholders by role
+          schema:
+            type: string
+            enum:
+              - sponsor
+              - manager
+              - impacted-employee
+              - change-practitioner
+              - project-team
+      responses:
+        '200':
+          description: A paginated list of stakeholders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Stakeholder'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createStakeholder
+      summary: Add a stakeholder
+      description: Adds a new stakeholder or impacted group to a change project.
+      tags:
+        - Stakeholders
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StakeholderCreate'
+      responses:
+        '201':
+          description: Stakeholder added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stakeholder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/change-plans:
+    get:
+      operationId: listChangePlans
+      summary: List change plans
+      description: >-
+        Retrieves change management plans for a project, including
+        communications, sponsorship, coaching, training, and resistance
+        management plans.
+      tags:
+        - Change Plans
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - name: planType
+          in: query
+          description: Filter by plan type
+          schema:
+            type: string
+            enum:
+              - communications
+              - sponsorship
+              - coaching
+              - training
+              - resistance-management
+      responses:
+        '200':
+          description: A paginated list of change plans
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChangePlan'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createChangePlan
+      summary: Create a change plan
+      description: Creates a new change management plan for a project.
+      tags:
+        - Change Plans
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePlanCreate'
+      responses:
+        '201':
+          description: Change plan created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangePlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/change-plans/{planId}:
+    get:
+      operationId: getChangePlan
+      summary: Get a change plan
+      description: Retrieves a specific change management plan by identifier.
+      tags:
+        - Change Plans
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/planIdParam'
+      responses:
+        '200':
+          description: The requested change plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangePlan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateChangePlan
+      summary: Update a change plan
+      description: Updates an existing change management plan.
+      tags:
+        - Change Plans
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+        - $ref: '#/components/parameters/planIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePlanCreate'
+      responses:
+        '200':
+          description: Change plan updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangePlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/risk-assessment:
+    get:
+      operationId: getRiskAssessment
+      summary: Get project risk assessment
+      description: >-
+        Retrieves the change risk assessment for a project, including
+        organizational attributes, change characteristics, and overall risk
+        profile.
+      tags:
+        - Risk Assessment
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      responses:
+        '200':
+          description: The project risk assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskAssessment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateRiskAssessment
+      summary: Update project risk assessment
+      description: Creates or updates the change risk assessment for a project.
+      tags:
+        - Risk Assessment
+      parameters:
+        - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskAssessmentCreate'
+      responses:
+        '200':
+          description: Risk assessment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /training/programs:
+    get:
+      operationId: listTrainingPrograms
+      summary: List training programs
+      description: >-
+        Retrieves available Prosci training and certification programs.
+      tags:
+        - Training
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - name: format
+          in: query
+          description: Filter by delivery format
+          schema:
+            type: string
+            enum:
+              - in-person
+              - virtual
+              - on-demand
+        - name: programType
+          in: query
+          description: Filter by program type
+          schema:
+            type: string
+            enum:
+              - certification
+              - practitioner
+              - executive
+              - train-the-trainer
+      responses:
+        '200':
+          description: A paginated list of training programs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TrainingProgram'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /training/enrollments:
+    get:
+      operationId: listEnrollments
+      summary: List training enrollments
+      description: Retrieves training enrollments for the authenticated organization.
+      tags:
+        - Training
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - name: status
+          in: query
+          description: Filter by enrollment status
+          schema:
+            type: string
+            enum:
+              - enrolled
+              - in-progress
+              - completed
+              - cancelled
+      responses:
+        '200':
+          description: A paginated list of enrollments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Enrollment'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createEnrollment
+      summary: Enroll in a training program
+      description: Creates a new enrollment in a Prosci training program.
+      tags:
+        - Training
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentCreate'
+      responses:
+        '201':
+          description: Enrollment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /organizations/{organizationId}/maturity:
+    get:
+      operationId: getOrganizationMaturity
+      summary: Get change management maturity
+      description: >-
+        Retrieves the organization's change management maturity assessment,
+        based on Prosci's Change Management Maturity Model.
+      tags:
+        - Organizations
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          description: Unique identifier for the organization
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The organization maturity assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaturityAssessment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        JWT token obtained from the Prosci authentication endpoint.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key provided by Prosci for application access.
+  parameters:
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+    assessmentIdParam:
+      name: assessmentId
+      in: path
+      required: true
+      description: Unique identifier for the assessment
+      schema:
+        type: string
+    planIdParam:
+      name: planId
+      in: path
+      required: true
+      description: Unique identifier for the change plan
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+  schemas:
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the project
+        name:
+          type: string
+          description: Name of the change project
+        description:
+          type: string
+          description: Detailed description of the change initiative
+        status:
+          type: string
+          enum:
+            - planning
+            - active
+            - completed
+            - on-hold
+            - cancelled
+          description: Current status of the project
+        changeType:
+          type: string
+          enum:
+            - process
+            - technology
+            - organizational
+            - cultural
+            - merger-acquisition
+            - strategic
+          description: Type of organizational change
+        scope:
+          type: string
+          enum:
+            - department
+            - division
+            - organization
+            - enterprise
+          description: Scope of the change initiative
+        sponsorId:
+          type: string
+          description: Identifier of the executive sponsor
+        sponsorName:
+          type: string
+          description: Name of the executive sponsor
+        changeManagerId:
+          type: string
+          description: Identifier of the change manager
+        changeManagerName:
+          type: string
+          description: Name of the assigned change manager
+        impactedEmployeeCount:
+          type: integer
+          description: Number of employees impacted by the change
+        startDate:
+          type: string
+          format: date
+          description: Project start date
+        targetCompletionDate:
+          type: string
+          format: date
+          description: Target completion date
+        organizationId:
+          type: string
+          description: Identifier of the parent organization
+        riskLevel:
+          type: string
+          enum:
+            - low
+            - moderate
+            - high
+            - critical
+          description: Overall risk level of the change
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the project was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the project was last updated
+      required:
+        - id
+        - name
+        - status
+        - changeType
+    ProjectCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the change project
+        description:
+          type: string
+          description: Detailed description of the change initiative
+        changeType:
+          type: string
+          enum:
+            - process
+            - technology
+            - organizational
+            - cultural
+            - merger-acquisition
+            - strategic
+        scope:
+          type: string
+          enum:
+            - department
+            - division
+            - organization
+            - enterprise
+        sponsorId:
+          type: string
+        changeManagerId:
+          type: string
+        impactedEmployeeCount:
+          type: integer
+        startDate:
+          type: string
+          format: date
+        targetCompletionDate:
+          type: string
+          format: date
+      required:
+        - name
+        - changeType
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+            - planning
+            - active
+            - completed
+            - on-hold
+            - cancelled
+        scope:
+          type: string
+          enum:
+            - department
+            - division
+            - organization
+            - enterprise
+        sponsorId:
+          type: string
+        changeManagerId:
+          type: string
+        impactedEmployeeCount:
+          type: integer
+        targetCompletionDate:
+          type: string
+          format: date
+    AdkarAssessment:
+      type: object
+      description: >-
+        Assessment based on Prosci's ADKAR Model measuring individual change
+        readiness across five dimensions: Awareness, Desire, Knowledge,
+        Ability, and Reinforcement.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the assessment
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        stakeholderId:
+          type: string
+          description: Identifier of the assessed stakeholder or group
+        stakeholderName:
+          type: string
+          description: Name of the assessed stakeholder or group
+        groupId:
+          type: string
+          description: Identifier of the impacted group
+        assessmentDate:
+          type: string
+          format: date
+          description: Date the assessment was conducted
+        awareness:
+          $ref: '#/components/schemas/AdkarDimension'
+        desire:
+          $ref: '#/components/schemas/AdkarDimension'
+        knowledge:
+          $ref: '#/components/schemas/AdkarDimension'
+        ability:
+          $ref: '#/components/schemas/AdkarDimension'
+        reinforcement:
+          $ref: '#/components/schemas/AdkarDimension'
+        overallScore:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Average score across all five ADKAR dimensions
+        barrierPoint:
+          type: string
+          enum:
+            - awareness
+            - desire
+            - knowledge
+            - ability
+            - reinforcement
+            - none
+          description: >-
+            The first ADKAR element scoring below threshold, indicating the
+            primary barrier to change adoption
+        notes:
+          type: string
+          description: Additional notes or observations
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - assessmentDate
+        - awareness
+        - desire
+        - knowledge
+        - ability
+        - reinforcement
+    AdkarAssessmentCreate:
+      type: object
+      properties:
+        stakeholderId:
+          type: string
+        groupId:
+          type: string
+        assessmentDate:
+          type: string
+          format: date
+        awareness:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        desire:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        knowledge:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        ability:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        reinforcement:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        notes:
+          type: string
+      required:
+        - assessmentDate
+        - awareness
+        - desire
+        - knowledge
+        - ability
+        - reinforcement
+    AdkarDimension:
+      type: object
+      description: Score and details for a single ADKAR dimension
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Score from 1 (low) to 5 (high)
+        notes:
+          type: string
+          description: Qualitative notes for this dimension
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended corrective actions
+      required:
+        - score
+    AdkarDimensionInput:
+      type: object
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+        notes:
+          type: string
+      required:
+        - score
+    PctAssessment:
+      type: object
+      description: >-
+        Assessment based on the Prosci Change Triangle (PCT) Model evaluating
+        three critical aspects of change success: Leadership/Sponsorship,
+        Project Management, and Change Management.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the assessment
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        assessmentDate:
+          type: string
+          format: date
+          description: Date the assessment was conducted
+        leadership:
+          $ref: '#/components/schemas/PctDimension'
+        projectManagement:
+          $ref: '#/components/schemas/PctDimension'
+        changeManagement:
+          $ref: '#/components/schemas/PctDimension'
+        overallHealth:
+          type: string
+          enum:
+            - healthy
+            - at-risk
+            - critical
+          description: Overall health of the change initiative
+        recommendations:
+          type: array
+          items:
+            type: string
+          description: Recommended actions based on the assessment
+        assessedBy:
+          type: string
+          description: Name of the person who conducted the assessment
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - assessmentDate
+        - leadership
+        - projectManagement
+        - changeManagement
+    PctAssessmentCreate:
+      type: object
+      properties:
+        assessmentDate:
+          type: string
+          format: date
+        leadership:
+          $ref: '#/components/schemas/PctDimensionInput'
+        projectManagement:
+          $ref: '#/components/schemas/PctDimensionInput'
+        changeManagement:
+          $ref: '#/components/schemas/PctDimensionInput'
+        recommendations:
+          type: array
+          items:
+            type: string
+        assessedBy:
+          type: string
+      required:
+        - assessmentDate
+        - leadership
+        - projectManagement
+        - changeManagement
+    PctDimension:
+      type: object
+      description: Score and details for a single PCT dimension
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Score from 1 (weak) to 5 (strong)
+        status:
+          type: string
+          enum:
+            - on-track
+            - at-risk
+            - off-track
+          description: Status indicator for this dimension
+        notes:
+          type: string
+          description: Qualitative notes
+        findings:
+          type: array
+          items:
+            type: string
+          description: Key findings for this dimension
+      required:
+        - score
+        - status
+    PctDimensionInput:
+      type: object
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+        status:
+          type: string
+          enum:
+            - on-track
+            - at-risk
+            - off-track
+        notes:
+          type: string
+        findings:
+          type: array
+          items:
+            type: string
+      required:
+        - score
+        - status
+    Stakeholder:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the stakeholder
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        name:
+          type: string
+          description: Name of the stakeholder or group
+        role:
+          type: string
+          enum:
+            - sponsor
+            - manager
+            - impacted-employee
+            - change-practitioner
+            - project-team
+          description: Role in the change initiative
+        email:
+          type: string
+          format: email
+          description: Email address
+        department:
+          type: string
+          description: Department or business unit
+        impactLevel:
+          type: string
+          enum:
+            - low
+            - moderate
+            - high
+            - critical
+          description: Level of impact from the change
+        influenceLevel:
+          type: string
+          enum:
+            - low
+            - moderate
+            - high
+            - critical
+          description: Level of influence on the change outcome
+        supportLevel:
+          type: string
+          enum:
+            - resistant
+            - neutral
+            - supportive
+            - champion
+          description: Current level of support for the change
+        isGroup:
+          type: boolean
+          description: Whether this represents a group rather than an individual
+        groupSize:
+          type: integer
+          description: Number of people in the group if isGroup is true
+        notes:
+          type: string
+          description: Additional notes
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - name
+        - role
+    StakeholderCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+            - sponsor
+            - manager
+            - impacted-employee
+            - change-practitioner
+            - project-team
+        email:
+          type: string
+          format: email
+        department:
+          type: string
+        impactLevel:
+          type: string
+          enum:
+            - low
+            - moderate
+            - high
+            - critical
+        influenceLevel:
+          type: string
+          enum:
+            - low
+            - moderate
+            - high
+            - critical
+        supportLevel:
+          type: string
+          enum:
+            - resistant
+            - neutral
+            - supportive
+            - champion
+        isGroup:
+          type: boolean
+          default: false
+        groupSize:
+          type: integer
+        notes:
+          type: string
+      required:
+        - name
+        - role
+    ChangePlan:
+      type: object
+      description: >-
+        A change management plan aligned with Prosci's methodology, covering
+        key plan types for successful change adoption.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the plan
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        planType:
+          type: string
+          enum:
+            - communications
+            - sponsorship
+            - coaching
+            - training
+            - resistance-management
+          description: Type of change management plan
+        title:
+          type: string
+          description: Title of the plan
+        description:
+          type: string
+          description: Description and objectives of the plan
+        status:
+          type: string
+          enum:
+            - draft
+            - approved
+            - in-progress
+            - completed
+          description: Current status of the plan
+        targetAudience:
+          type: array
+          items:
+            type: string
+          description: Target audience groups for this plan
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanActivity'
+          description: Planned activities and milestones
+        owner:
+          type: string
+          description: Person responsible for executing the plan
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - planType
+        - title
+        - status
+    ChangePlanCreate:
+      type: object
+      properties:
+        planType:
+          type: string
+          enum:
+            - communications
+            - sponsorship
+            - coaching
+            - training
+            - resistance-management
+        title:
+          type: string
+        description:
+          type: string
+        targetAudience:
+          type: array
+          items:
+            type: string
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanActivityInput'
+        owner:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+      required:
+        - planType
+        - title
+    PlanActivity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the activity
+        title:
+          type: string
+          description: Title of the activity
+        description:
+          type: string
+          description: Description of the activity
+        dueDate:
+          type: string
+          format: date
+          description: Due date for the activity
+        status:
+          type: string
+          enum:
+            - pending
+            - in-progress
+            - completed
+            - cancelled
+          description: Current status
+        assignee:
+          type: string
+          description: Person assigned to this activity
+      required:
+        - id
+        - title
+        - status
+    PlanActivityInput:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        dueDate:
+          type: string
+          format: date
+        assignee:
+          type: string
+      required:
+        - title
+    RiskAssessment:
+      type: object
+      description: >-
+        Change risk assessment evaluating organizational and change
+        characteristics that affect the likelihood of successful adoption.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the risk assessment
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        assessmentDate:
+          type: string
+          format: date
+        organizationalAttributes:
+          type: object
+          properties:
+            pastChangeSuccess:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: History of successful change in the organization
+            changeCapacity:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Current capacity to absorb additional change
+            culturalAlignment:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Alignment of organizational culture with the change
+            executiveSponsorEngagement:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Level of active sponsorship from executives
+            middleManagementSupport:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Level of support from middle management
+        changeCharacteristics:
+          type: object
+          properties:
+            scope:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Breadth of the change across the organization
+            complexity:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Complexity of the change
+            timeframe:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Aggressiveness of the timeline
+            impactOnDailyWork:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Degree of change to daily work processes
+            jobLossRisk:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Perceived risk of job loss
+        overallRiskScore:
+          type: number
+          format: float
+          description: Calculated overall risk score
+        riskLevel:
+          type: string
+          enum:
+            - low
+            - moderate
+            - high
+            - critical
+          description: Categorized risk level
+        mitigationStrategies:
+          type: array
+          items:
+            type: string
+          description: Recommended risk mitigation strategies
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - assessmentDate
+        - riskLevel
+    RiskAssessmentCreate:
+      type: object
+      properties:
+        assessmentDate:
+          type: string
+          format: date
+        organizationalAttributes:
+          type: object
+          properties:
+            pastChangeSuccess:
+              type: integer
+              minimum: 1
+              maximum: 5
+            changeCapacity:
+              type: integer
+              minimum: 1
+              maximum: 5
+            culturalAlignment:
+              type: integer
+              minimum: 1
+              maximum: 5
+            executiveSponsorEngagement:
+              type: integer
+              minimum: 1
+              maximum: 5
+            middleManagementSupport:
+              type: integer
+              minimum: 1
+              maximum: 5
+        changeCharacteristics:
+          type: object
+          properties:
+            scope:
+              type: integer
+              minimum: 1
+              maximum: 5
+            complexity:
+              type: integer
+              minimum: 1
+              maximum: 5
+            timeframe:
+              type: integer
+              minimum: 1
+              maximum: 5
+            impactOnDailyWork:
+              type: integer
+              minimum: 1
+              maximum: 5
+            jobLossRisk:
+              type: integer
+              minimum: 1
+              maximum: 5
+        mitigationStrategies:
+          type: array
+          items:
+            type: string
+      required:
+        - assessmentDate
+    TrainingProgram:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the program
+        name:
+          type: string
+          description: Name of the training program
+        description:
+          type: string
+          description: Description of the program
+        programType:
+          type: string
+          enum:
+            - certification
+            - practitioner
+            - executive
+            - train-the-trainer
+          description: Type of training program
+        format:
+          type: string
+          enum:
+            - in-person
+            - virtual
+            - on-demand
+          description: Delivery format
+        durationDays:
+          type: integer
+          description: Duration of the program in days
+        certificationLevel:
+          type: string
+          enum:
+            - certified-change-practitioner
+            - certified-change-management-professional
+            - certified-instructor
+          description: Certification level awarded upon completion
+        prerequisites:
+          type: array
+          items:
+            type: string
+          description: Prerequisites for enrollment
+        url:
+          type: string
+          format: uri
+          description: URL for more information
+      required:
+        - id
+        - name
+        - programType
+        - format
+    Enrollment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the enrollment
+        programId:
+          type: string
+          description: Identifier of the training program
+        programName:
+          type: string
+          description: Name of the training program
+        participantId:
+          type: string
+          description: Identifier of the participant
+        participantName:
+          type: string
+          description: Name of the participant
+        participantEmail:
+          type: string
+          format: email
+          description: Email of the participant
+        status:
+          type: string
+          enum:
+            - enrolled
+            - in-progress
+            - completed
+            - cancelled
+          description: Enrollment status
+        enrollmentDate:
+          type: string
+          format: date
+          description: Date of enrollment
+        completionDate:
+          type: string
+          format: date
+          description: Date of completion
+        certificationId:
+          type: string
+          description: Certification identifier upon successful completion
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - programId
+        - participantId
+        - status
+    EnrollmentCreate:
+      type: object
+      properties:
+        programId:
+          type: string
+        participantId:
+          type: string
+        participantName:
+          type: string
+        participantEmail:
+          type: string
+          format: email
+      required:
+        - programId
+        - participantId
+    MaturityAssessment:
+      type: object
+      description: >-
+        Assessment of an organization's change management maturity across
+        five capability areas based on Prosci's Change Management Maturity
+        Model.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the maturity assessment
+        organizationId:
+          type: string
+          description: Identifier of the organization
+        assessmentDate:
+          type: string
+          format: date
+        overallLevel:
+          type: integer
+          minimum: 1
+          maximum: 5
+          description: >-
+            Overall maturity level from 1 (ad hoc) to 5 (organizational
+            competency)
+        leadershipCompetency:
+          $ref: '#/components/schemas/MaturityDimension'
+        applicationCompetency:
+          $ref: '#/components/schemas/MaturityDimension'
+        competencyDevelopment:
+          $ref: '#/components/schemas/MaturityDimension'
+        standardization:
+          $ref: '#/components/schemas/MaturityDimension'
+        socialization:
+          $ref: '#/components/schemas/MaturityDimension'
+        recommendations:
+          type: array
+          items:
+            type: string
+          description: Recommendations for advancing maturity
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - organizationId
+        - assessmentDate
+        - overallLevel
+    MaturityDimension:
+      type: object
+      properties:
+        level:
+          type: integer
+          minimum: 1
+          maximum: 5
+          description: Maturity level for this dimension
+        description:
+          type: string
+          description: Description of current state
+        gaps:
+          type: array
+          items:
+            type: string
+          description: Identified gaps
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended actions
+      required:
+        - level
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+        - total
+        - limit
+        - offset
+        - hasMore
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          description: Detailed validation errors
+      required:
+        - code
+        - message
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: The request was well-formed but contained semantic errors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Too many requests - rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+security:
+  - bearerAuth: []
+  - apiKeyAuth: []
+tags:
+  - name: Projects
+    description: Manage change management projects
+  - name: ADKAR Assessments
+    description: >-
+      Assess individual and group change readiness using Prosci's ADKAR Model
+  - name: PCT Assessments
+    description: >-
+      Evaluate change initiative health using the Prosci Change Triangle
+  - name: Stakeholders
+    description: Manage stakeholders and impacted groups
+  - name: Change Plans
+    description: >-
+      Create and manage change plans including communications, sponsorship,
+      coaching, training, and resistance management
+  - name: Risk Assessment
+    description: Assess and manage change risk
+  - name: Training
+    description: Training programs and enrollment management
+  - name: Organizations
+    description: Organization-level change management maturity
