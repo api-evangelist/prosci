@@ -9,8 +9,8 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Change Management
-  - Training
   - Methodology
+  - Training
 url: >-
   https://raw.githubusercontent.com/api-evangelist/prosci/refs/heads/main/apis.yml
 created: '2024-01-20'

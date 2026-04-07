@@ -1858,23 +1858,23 @@ security:
   - bearerAuth: []
   - apiKeyAuth: []
 tags:
-  - name: Projects
-    description: Manage change management projects
   - name: ADKAR Assessments
     description: >-
       Assess individual and group change readiness using Prosci's ADKAR Model
-  - name: PCT Assessments
-    description: >-
-      Evaluate change initiative health using the Prosci Change Triangle
-  - name: Stakeholders
-    description: Manage stakeholders and impacted groups
   - name: Change Plans
     description: >-
       Create and manage change plans including communications, sponsorship,
       coaching, training, and resistance management
-  - name: Risk Assessment
-    description: Assess and manage change risk
-  - name: Training
-    description: Training programs and enrollment management
   - name: Organizations
     description: Organization-level change management maturity
+  - name: PCT Assessments
+    description: >-
+      Evaluate change initiative health using the Prosci Change Triangle
+  - name: Projects
+    description: Manage change management projects
+  - name: Risk Assessment
+    description: Assess and manage change risk
+  - name: Stakeholders
+    description: Manage stakeholders and impacted groups
+  - name: Training
+    description: Training programs and enrollment management
