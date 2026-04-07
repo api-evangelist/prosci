@@ -22,7 +22,7 @@ paths:
   /projects:
     get:
       operationId: listProjects
-      summary: List change projects
+      summary: Prosci List change projects
       description: >-
         Retrieves a paginated list of change management projects for the
         authenticated organization.
@@ -67,7 +67,7 @@ paths:
           $ref: '#/components/responses/RateLimited'
     post:
       operationId: createProject
-      summary: Create a change project
+      summary: Prosci Create a change project
       description: Creates a new change management project.
       tags:
         - Projects
@@ -93,7 +93,7 @@ paths:
   /projects/{projectId}:
     get:
       operationId: getProject
-      summary: Get a change project
+      summary: Prosci Get a change project
       description: Retrieves a specific change management project by identifier.
       tags:
         - Projects
@@ -112,7 +112,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateProject
-      summary: Update a change project
+      summary: Prosci Update a change project
       description: Updates an existing change management project.
       tags:
         - Projects
@@ -139,7 +139,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteProject
-      summary: Delete a change project
+      summary: Prosci Delete a change project
       description: Deletes a change management project and associated data.
       tags:
         - Projects
@@ -155,7 +155,7 @@ paths:
   /projects/{projectId}/adkar-assessments:
     get:
       operationId: listAdkarAssessments
-      summary: List ADKAR assessments
+      summary: Prosci List ADKAR assessments
       description: >-
         Retrieves ADKAR assessments for a specific project. ADKAR stands for
         Awareness, Desire, Knowledge, Ability, and Reinforcement.
@@ -195,7 +195,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createAdkarAssessment
-      summary: Create an ADKAR assessment
+      summary: Prosci Create an ADKAR assessment
       description: >-
         Creates a new ADKAR assessment for a project, evaluating an individual
         or group across the five ADKAR dimensions.
@@ -225,7 +225,7 @@ paths:
   /projects/{projectId}/adkar-assessments/{assessmentId}:
     get:
       operationId: getAdkarAssessment
-      summary: Get an ADKAR assessment
+      summary: Prosci Get an ADKAR assessment
       description: Retrieves a specific ADKAR assessment by identifier.
       tags:
         - ADKAR Assessments
@@ -245,7 +245,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateAdkarAssessment
-      summary: Update an ADKAR assessment
+      summary: Prosci Update an ADKAR assessment
       description: Updates an existing ADKAR assessment.
       tags:
         - ADKAR Assessments
@@ -274,7 +274,7 @@ paths:
   /projects/{projectId}/pct-assessments:
     get:
       operationId: listPctAssessments
-      summary: List PCT assessments
+      summary: Prosci List PCT assessments
       description: >-
         Retrieves Prosci Change Triangle (PCT) assessments for a project,
         evaluating Leadership/Sponsorship, Project Management, and Change
@@ -305,7 +305,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createPctAssessment
-      summary: Create a PCT assessment
+      summary: Prosci Create a PCT assessment
       description: Creates a new Prosci Change Triangle assessment for a project.
       tags:
         - PCT Assessments
@@ -333,7 +333,7 @@ paths:
   /projects/{projectId}/stakeholders:
     get:
       operationId: listStakeholders
-      summary: List stakeholders
+      summary: Prosci List stakeholders
       description: >-
         Retrieves stakeholders and impacted groups associated with a change
         project.
@@ -374,7 +374,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createStakeholder
-      summary: Add a stakeholder
+      summary: Prosci Add a stakeholder
       description: Adds a new stakeholder or impacted group to a change project.
       tags:
         - Stakeholders
@@ -402,7 +402,7 @@ paths:
   /projects/{projectId}/change-plans:
     get:
       operationId: listChangePlans
-      summary: List change plans
+      summary: Prosci List change plans
       description: >-
         Retrieves change management plans for a project, including
         communications, sponsorship, coaching, training, and resistance
@@ -444,7 +444,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createChangePlan
-      summary: Create a change plan
+      summary: Prosci Create a change plan
       description: Creates a new change management plan for a project.
       tags:
         - Change Plans
@@ -472,7 +472,7 @@ paths:
   /projects/{projectId}/change-plans/{planId}:
     get:
       operationId: getChangePlan
-      summary: Get a change plan
+      summary: Prosci Get a change plan
       description: Retrieves a specific change management plan by identifier.
       tags:
         - Change Plans
@@ -492,7 +492,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateChangePlan
-      summary: Update a change plan
+      summary: Prosci Update a change plan
       description: Updates an existing change management plan.
       tags:
         - Change Plans
@@ -521,7 +521,7 @@ paths:
   /projects/{projectId}/risk-assessment:
     get:
       operationId: getRiskAssessment
-      summary: Get project risk assessment
+      summary: Prosci Get project risk assessment
       description: >-
         Retrieves the change risk assessment for a project, including
         organizational attributes, change characteristics, and overall risk
@@ -543,7 +543,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateRiskAssessment
-      summary: Update project risk assessment
+      summary: Prosci Update project risk assessment
       description: Creates or updates the change risk assessment for a project.
       tags:
         - Risk Assessment
@@ -571,7 +571,7 @@ paths:
   /training/programs:
     get:
       operationId: listTrainingPrograms
-      summary: List training programs
+      summary: Prosci List training programs
       description: >-
         Retrieves available Prosci training and certification programs.
       tags:
@@ -617,7 +617,7 @@ paths:
   /training/enrollments:
     get:
       operationId: listEnrollments
-      summary: List training enrollments
+      summary: Prosci List training enrollments
       description: Retrieves training enrollments for the authenticated organization.
       tags:
         - Training
@@ -652,7 +652,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createEnrollment
-      summary: Enroll in a training program
+      summary: Prosci Enroll in a training program
       description: Creates a new enrollment in a Prosci training program.
       tags:
         - Training
@@ -676,7 +676,7 @@ paths:
   /organizations/{organizationId}/maturity:
     get:
       operationId: getOrganizationMaturity
-      summary: Get change management maturity
+      summary: Prosci Get change management maturity
       description: >-
         Retrieves the organization's change management maturity assessment,
         based on Prosci's Change Management Maturity Model.
