@@ -1,44 +1,49 @@
 # Prosci (prosci)
 Prosci is a global leader in change management research, methodology, and solutions. They provide change management training, certification, tools, and consulting services to help organizations successfully implement change initiatives.
 
-**URL:** [Visit APIs.json URL](https://www.prosci.com)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/prosci/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+
+## Tags:
+
+ - Change Management, Methodology, Training
 
 ## Timestamps
 
-- **Created:** 2024-01-20 00:00:00+00:00 
-- **Modified:** 2024-01-20 00:00:00+00:00 
+- **Created:** 2024-01-20
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### Prosci Change Management API
-API for accessing Prosci change management methodologies, tools, and resources
+### Prosci Change Management
+API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.
 
-**Human URL:** [https://www.prosci.com](https://www.prosci.com)
+**Human URL:** [https://www.prosci.com/](https://www.prosci.com/)
+
+**Base URL:** [https://api.prosci.com/v1](https://api.prosci.com/v1)
 
 
 #### Tags:
 
- - Change Management, Training, Methodology, ADKAR
+ - Change Management, ADKAR, Methodology, Training
 
 #### Properties
 
 - [Documentation](https://www.prosci.com/resources)
-- [OpenAPI](https://api.prosci.com/openapi.json)
-- [Authentication](https://api.prosci.com/auth)
+- [OpenAPI](openapi/prosci-change-management-openapi.yml)
 
 ## Common Properties
 
-- [Portal](https://www.prosci.com/portal)
-- [Training](https://www.prosci.com/solutions/training-programs)
-- [Certification](https://www.prosci.com/solutions/prosci-certification)
-- [Tools](https://www.prosci.com/solutions/tools-and-assessments)
-- [Research](https://www.prosci.com/resources/articles)
 - [Blog](https://www.prosci.com/blog)
 - [Terms of Service](https://www.prosci.com/terms)
 - [Privacy Policy](https://www.prosci.com/privacy)
+- [Website](https://www.prosci.com)
 
 ## Maintainers
 
-**FN:** Prosci
+**FN:** Kin Lane
 
-**Email:** info@prosci.com
+**Email:** kin@apievangelist.com

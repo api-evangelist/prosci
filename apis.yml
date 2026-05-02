@@ -14,9 +14,28 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/prosci/refs/heads/main/apis.yml
 created: '2024-01-20'
-modified: '2026-03-16'
+modified: '2026-04-28'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: prosci:prosci
+    name: Prosci Change Management
+    description: >-
+      API for managing organizational change initiatives using Prosci's
+      research-based change management methodology. Provides access to change
+      projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments,
+      stakeholder analyses, change plans, and training resources.
+    humanURL: https://www.prosci.com/
+    baseURL: https://api.prosci.com/v1
+    tags:
+      - Change Management
+      - ADKAR
+      - Methodology
+      - Training
+    properties:
+      - type: Documentation
+        url: https://www.prosci.com/resources
+      - type: OpenAPI
+        url: openapi/prosci-change-management-openapi.yml
 common:
   - type: Blog
     url: https://www.prosci.com/blog
