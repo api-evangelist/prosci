@@ -1,0 +1,13 @@
+{
+  "repo": "prosci",
+  "feeds": [
+    {
+      "source": "https://www.prosci.com/blog",
+      "feed_url": "https://www.prosci.com/blog/rss.xml",
+      "saved": 1,
+      "title": "[BL01] Prosci Blog"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-05-03T23:34:17Z"
+}
