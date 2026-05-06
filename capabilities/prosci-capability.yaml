@@ -1,0 +1,822 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Prosci Change Management API
+  description: API for managing organizational change initiatives using Prosci's research-based change management methodology.
+    Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses,
+    change plans, and training resources.
+  tags:
+  - Prosci
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: prosci
+    baseUri: https://api.prosci.com/v1
+    description: Prosci Change Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{PROSCI_TOKEN}}'
+    resources:
+    - name: projects
+      path: /projects
+      operations:
+      - name: listprojects
+        method: GET
+        description: Prosci List change projects
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter projects by status
+        - name: sponsorId
+          in: query
+          type: string
+          description: Filter projects by executive sponsor identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createproject
+        method: POST
+        description: Prosci Create a change project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid
+      path: /projects/{projectId}
+      operations:
+      - name: getproject
+        method: GET
+        description: Prosci Get a change project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateproject
+        method: PUT
+        description: Prosci Update a change project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteproject
+        method: DELETE
+        description: Prosci Delete a change project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-adkar-assessments
+      path: /projects/{projectId}/adkar-assessments
+      operations:
+      - name: listadkarassessments
+        method: GET
+        description: Prosci List ADKAR assessments
+        inputParameters:
+        - name: stakeholderId
+          in: query
+          type: string
+          description: Filter assessments by stakeholder identifier
+        - name: groupId
+          in: query
+          type: string
+          description: Filter assessments by impacted group identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createadkarassessment
+        method: POST
+        description: Prosci Create an ADKAR assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-adkar-assessments-assessmenti
+      path: /projects/{projectId}/adkar-assessments/{assessmentId}
+      operations:
+      - name: getadkarassessment
+        method: GET
+        description: Prosci Get an ADKAR assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateadkarassessment
+        method: PUT
+        description: Prosci Update an ADKAR assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-pct-assessments
+      path: /projects/{projectId}/pct-assessments
+      operations:
+      - name: listpctassessments
+        method: GET
+        description: Prosci List PCT assessments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpctassessment
+        method: POST
+        description: Prosci Create a PCT assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-stakeholders
+      path: /projects/{projectId}/stakeholders
+      operations:
+      - name: liststakeholders
+        method: GET
+        description: Prosci List stakeholders
+        inputParameters:
+        - name: role
+          in: query
+          type: string
+          description: Filter stakeholders by role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createstakeholder
+        method: POST
+        description: Prosci Add a stakeholder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-change-plans
+      path: /projects/{projectId}/change-plans
+      operations:
+      - name: listchangeplans
+        method: GET
+        description: Prosci List change plans
+        inputParameters:
+        - name: planType
+          in: query
+          type: string
+          description: Filter by plan type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createchangeplan
+        method: POST
+        description: Prosci Create a change plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-change-plans-planid
+      path: /projects/{projectId}/change-plans/{planId}
+      operations:
+      - name: getchangeplan
+        method: GET
+        description: Prosci Get a change plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatechangeplan
+        method: PUT
+        description: Prosci Update a change plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-risk-assessment
+      path: /projects/{projectId}/risk-assessment
+      operations:
+      - name: getriskassessment
+        method: GET
+        description: Prosci Get project risk assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateriskassessment
+        method: PUT
+        description: Prosci Update project risk assessment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: training-programs
+      path: /training/programs
+      operations:
+      - name: listtrainingprograms
+        method: GET
+        description: Prosci List training programs
+        inputParameters:
+        - name: format
+          in: query
+          type: string
+          description: Filter by delivery format
+        - name: programType
+          in: query
+          type: string
+          description: Filter by program type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: training-enrollments
+      path: /training/enrollments
+      operations:
+      - name: listenrollments
+        method: GET
+        description: Prosci List training enrollments
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by enrollment status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createenrollment
+        method: POST
+        description: Prosci Enroll in a training program
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: organizations-organizationid-maturity
+      path: /organizations/{organizationId}/maturity
+      operations:
+      - name: getorganizationmaturity
+        method: GET
+        description: Prosci Get change management maturity
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for the organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: prosci-rest
+    description: REST adapter for Prosci Change Management API.
+    resources:
+    - path: /projects
+      name: listprojects
+      operations:
+      - method: GET
+        name: listprojects
+        description: Prosci List change projects
+        call: prosci.listprojects
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects
+      name: createproject
+      operations:
+      - method: POST
+        name: createproject
+        description: Prosci Create a change project
+        call: prosci.createproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}
+      name: getproject
+      operations:
+      - method: GET
+        name: getproject
+        description: Prosci Get a change project
+        call: prosci.getproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}
+      name: updateproject
+      operations:
+      - method: PUT
+        name: updateproject
+        description: Prosci Update a change project
+        call: prosci.updateproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}
+      name: deleteproject
+      operations:
+      - method: DELETE
+        name: deleteproject
+        description: Prosci Delete a change project
+        call: prosci.deleteproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/adkar-assessments
+      name: listadkarassessments
+      operations:
+      - method: GET
+        name: listadkarassessments
+        description: Prosci List ADKAR assessments
+        call: prosci.listadkarassessments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/adkar-assessments
+      name: createadkarassessment
+      operations:
+      - method: POST
+        name: createadkarassessment
+        description: Prosci Create an ADKAR assessment
+        call: prosci.createadkarassessment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/adkar-assessments/{assessmentId}
+      name: getadkarassessment
+      operations:
+      - method: GET
+        name: getadkarassessment
+        description: Prosci Get an ADKAR assessment
+        call: prosci.getadkarassessment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/adkar-assessments/{assessmentId}
+      name: updateadkarassessment
+      operations:
+      - method: PUT
+        name: updateadkarassessment
+        description: Prosci Update an ADKAR assessment
+        call: prosci.updateadkarassessment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/pct-assessments
+      name: listpctassessments
+      operations:
+      - method: GET
+        name: listpctassessments
+        description: Prosci List PCT assessments
+        call: prosci.listpctassessments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/pct-assessments
+      name: createpctassessment
+      operations:
+      - method: POST
+        name: createpctassessment
+        description: Prosci Create a PCT assessment
+        call: prosci.createpctassessment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/stakeholders
+      name: liststakeholders
+      operations:
+      - method: GET
+        name: liststakeholders
+        description: Prosci List stakeholders
+        call: prosci.liststakeholders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/stakeholders
+      name: createstakeholder
+      operations:
+      - method: POST
+        name: createstakeholder
+        description: Prosci Add a stakeholder
+        call: prosci.createstakeholder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/change-plans
+      name: listchangeplans
+      operations:
+      - method: GET
+        name: listchangeplans
+        description: Prosci List change plans
+        call: prosci.listchangeplans
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/change-plans
+      name: createchangeplan
+      operations:
+      - method: POST
+        name: createchangeplan
+        description: Prosci Create a change plan
+        call: prosci.createchangeplan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/change-plans/{planId}
+      name: getchangeplan
+      operations:
+      - method: GET
+        name: getchangeplan
+        description: Prosci Get a change plan
+        call: prosci.getchangeplan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/change-plans/{planId}
+      name: updatechangeplan
+      operations:
+      - method: PUT
+        name: updatechangeplan
+        description: Prosci Update a change plan
+        call: prosci.updatechangeplan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/risk-assessment
+      name: getriskassessment
+      operations:
+      - method: GET
+        name: getriskassessment
+        description: Prosci Get project risk assessment
+        call: prosci.getriskassessment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/risk-assessment
+      name: updateriskassessment
+      operations:
+      - method: PUT
+        name: updateriskassessment
+        description: Prosci Update project risk assessment
+        call: prosci.updateriskassessment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /training/programs
+      name: listtrainingprograms
+      operations:
+      - method: GET
+        name: listtrainingprograms
+        description: Prosci List training programs
+        call: prosci.listtrainingprograms
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /training/enrollments
+      name: listenrollments
+      operations:
+      - method: GET
+        name: listenrollments
+        description: Prosci List training enrollments
+        call: prosci.listenrollments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /training/enrollments
+      name: createenrollment
+      operations:
+      - method: POST
+        name: createenrollment
+        description: Prosci Enroll in a training program
+        call: prosci.createenrollment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /organizations/{organizationId}/maturity
+      name: getorganizationmaturity
+      operations:
+      - method: GET
+        name: getorganizationmaturity
+        description: Prosci Get change management maturity
+        call: prosci.getorganizationmaturity
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: prosci-mcp
+    transport: http
+    description: MCP adapter for Prosci Change Management API for AI agent use.
+    tools:
+    - name: listprojects
+      description: Prosci List change projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.listprojects
+      with:
+        status: tools.status
+        sponsorId: tools.sponsorId
+      inputParameters:
+      - name: status
+        type: string
+        description: Filter projects by status
+      - name: sponsorId
+        type: string
+        description: Filter projects by executive sponsor identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createproject
+      description: Prosci Create a change project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prosci.createproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproject
+      description: Prosci Get a change project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.getproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateproject
+      description: Prosci Update a change project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: prosci.updateproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteproject
+      description: Prosci Delete a change project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: prosci.deleteproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listadkarassessments
+      description: Prosci List ADKAR assessments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.listadkarassessments
+      with:
+        stakeholderId: tools.stakeholderId
+        groupId: tools.groupId
+      inputParameters:
+      - name: stakeholderId
+        type: string
+        description: Filter assessments by stakeholder identifier
+      - name: groupId
+        type: string
+        description: Filter assessments by impacted group identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createadkarassessment
+      description: Prosci Create an ADKAR assessment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prosci.createadkarassessment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getadkarassessment
+      description: Prosci Get an ADKAR assessment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.getadkarassessment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateadkarassessment
+      description: Prosci Update an ADKAR assessment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: prosci.updateadkarassessment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listpctassessments
+      description: Prosci List PCT assessments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.listpctassessments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createpctassessment
+      description: Prosci Create a PCT assessment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prosci.createpctassessment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: liststakeholders
+      description: Prosci List stakeholders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.liststakeholders
+      with:
+        role: tools.role
+      inputParameters:
+      - name: role
+        type: string
+        description: Filter stakeholders by role
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createstakeholder
+      description: Prosci Add a stakeholder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prosci.createstakeholder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listchangeplans
+      description: Prosci List change plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.listchangeplans
+      with:
+        planType: tools.planType
+      inputParameters:
+      - name: planType
+        type: string
+        description: Filter by plan type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createchangeplan
+      description: Prosci Create a change plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prosci.createchangeplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getchangeplan
+      description: Prosci Get a change plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.getchangeplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatechangeplan
+      description: Prosci Update a change plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: prosci.updatechangeplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getriskassessment
+      description: Prosci Get project risk assessment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.getriskassessment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateriskassessment
+      description: Prosci Update project risk assessment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: prosci.updateriskassessment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtrainingprograms
+      description: Prosci List training programs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.listtrainingprograms
+      with:
+        format: tools.format
+        programType: tools.programType
+      inputParameters:
+      - name: format
+        type: string
+        description: Filter by delivery format
+      - name: programType
+        type: string
+        description: Filter by program type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listenrollments
+      description: Prosci List training enrollments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.listenrollments
+      with:
+        status: tools.status
+      inputParameters:
+      - name: status
+        type: string
+        description: Filter by enrollment status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createenrollment
+      description: Prosci Enroll in a training program
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prosci.createenrollment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getorganizationmaturity
+      description: Prosci Get change management maturity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prosci.getorganizationmaturity
+      with:
+        organizationId: tools.organizationId
+      inputParameters:
+      - name: organizationId
+        type: string
+        description: Unique identifier for the organization
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    PROSCI_TOKEN: PROSCI_TOKEN
