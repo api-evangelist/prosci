@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://www.prosci.com/blog",
-      "feed_url": "https://www.prosci.com/blog/rss.xml",
-      "saved": 1,
-      "title": "[BL01] Prosci Blog"
+      "feed_url": "https://www.prosci.com/blog/atom.xml",
+      "title": "[BL01] Prosci Blog",
+      "saved": 1
     }
   ],
-  "post_count": 1,
-  "fetched": "2026-05-03T23:34:17Z"
+  "post_count": 2,
+  "fetched": "2026-05-09T20:17:51Z"
 }
