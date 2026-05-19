@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Prosci Change Management API — Organizations
+  description: 'Prosci Change Management API — Organizations. 1 operations. Lead operation: Prosci Get change management maturity.
+    Self-contained Naftiko capability covering one Prosci business surface.'
+  tags:
+  - Prosci
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PROSCI_API_KEY: PROSCI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: change-management-organizations
+    baseUri: https://api.prosci.com/v1
+    description: Prosci Change Management API — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-organizationId-maturity
+      path: /organizations/{organizationId}/maturity
+      operations:
+      - name: getorganizationmaturity
+        method: GET
+        description: Prosci Get change management maturity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          description: Unique identifier for the organization
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PROSCI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: change-management-organizations-rest
+    port: 8080
+    description: REST adapter for Prosci Change Management API — Organizations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/organizations/{organizationid}/maturity
+      name: organizations-organizationid-maturity
+      description: REST surface for organizations-organizationId-maturity.
+      operations:
+      - method: GET
+        name: getorganizationmaturity
+        description: Prosci Get change management maturity
+        call: change-management-organizations.getorganizationmaturity
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: change-management-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Prosci Change Management API — Organizations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: prosci-get-change-management-maturity
+      description: Prosci Get change management maturity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: change-management-organizations.getorganizationmaturity
+      with:
+        organizationId: tools.organizationId
+      outputParameters:
+      - type: object
+        mapping: $.
