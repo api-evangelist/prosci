@@ -1,0 +1,685 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosci Change Management API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List change projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter projects by status"
+              },
+              {
+                "name": "sponsorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter projects by executive sponsor identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of change management projects for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Prosci Create a change project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new change management project."
+        },
+        {
+          "info": {
+            "name": "Prosci Get a change project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific change management project by identifier."
+        },
+        {
+          "info": {
+            "name": "Prosci Update a change project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prosci.com/v1/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing change management project."
+        },
+        {
+          "info": {
+            "name": "Prosci Delete a change project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.prosci.com/v1/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ]
+          },
+          "docs": "Deletes a change management project and associated data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ADKAR Assessments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List ADKAR assessments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/adkar-assessments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "stakeholderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter assessments by stakeholder identifier"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "Filter assessments by impacted group identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves ADKAR assessments for a specific project. ADKAR stands for Awareness, Desire, Knowledge, Ability, and Reinforcement."
+        },
+        {
+          "info": {
+            "name": "Prosci Create an ADKAR assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/projects/:projectId/adkar-assessments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ADKAR assessment for a project, evaluating an individual or group across the five ADKAR dimensions."
+        },
+        {
+          "info": {
+            "name": "Prosci Get an ADKAR assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/adkar-assessments/:assessmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "assessmentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the assessment"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific ADKAR assessment by identifier."
+        },
+        {
+          "info": {
+            "name": "Prosci Update an ADKAR assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prosci.com/v1/projects/:projectId/adkar-assessments/:assessmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "assessmentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the assessment"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ADKAR assessment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PCT Assessments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List PCT assessments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/pct-assessments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieves Prosci Change Triangle (PCT) assessments for a project, evaluating Leadership/Sponsorship, Project Management, and Change Management dimensions."
+        },
+        {
+          "info": {
+            "name": "Prosci Create a PCT assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/projects/:projectId/pct-assessments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Prosci Change Triangle assessment for a project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stakeholders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List stakeholders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/stakeholders",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "Filter stakeholders by role"
+              }
+            ]
+          },
+          "docs": "Retrieves stakeholders and impacted groups associated with a change project."
+        },
+        {
+          "info": {
+            "name": "Prosci Add a stakeholder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/projects/:projectId/stakeholders",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new stakeholder or impacted group to a change project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Change Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List change plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/change-plans",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "planType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plan type"
+              }
+            ]
+          },
+          "docs": "Retrieves change management plans for a project, including communications, sponsorship, coaching, training, and resistance management plans."
+        },
+        {
+          "info": {
+            "name": "Prosci Create a change plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/projects/:projectId/change-plans",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new change management plan for a project."
+        },
+        {
+          "info": {
+            "name": "Prosci Get a change plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/change-plans/:planId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change plan"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific change management plan by identifier."
+        },
+        {
+          "info": {
+            "name": "Prosci Update a change plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prosci.com/v1/projects/:projectId/change-plans/:planId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              },
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change plan"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing change management plan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Risk Assessment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci Get project risk assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/risk-assessment",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ]
+          },
+          "docs": "Retrieves the change risk assessment for a project, including organizational attributes, change characteristics, and overall risk profile."
+        },
+        {
+          "info": {
+            "name": "Prosci Update project risk assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prosci.com/v1/projects/:projectId/risk-assessment",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates the change risk assessment for a project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Training",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List training programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/training/programs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Filter by delivery format"
+              },
+              {
+                "name": "programType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by program type"
+              }
+            ]
+          },
+          "docs": "Retrieves available Prosci training and certification programs."
+        },
+        {
+          "info": {
+            "name": "Prosci List training enrollments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/training/enrollments",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by enrollment status"
+              }
+            ]
+          },
+          "docs": "Retrieves training enrollments for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Prosci Enroll in a training program",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/training/enrollments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new enrollment in a Prosci training program."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci Get change management maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/organizations/:organizationId/maturity",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the organization"
+              }
+            ]
+          },
+          "docs": "Retrieves the organization's change management maturity assessment, based on Prosci's Change Management Maturity Model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
