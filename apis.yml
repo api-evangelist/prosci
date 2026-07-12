@@ -34,6 +34,10 @@ apis:
       - type: OpenAPI
         url: openapi/prosci-change-management-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/prosci-domain-security.yml
+  - type: Authentication
+    url: authentication/prosci-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/prosci
   - type: Blog

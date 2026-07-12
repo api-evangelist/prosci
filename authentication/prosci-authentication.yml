@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/prosci-change-management-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JWT token obtained from the Prosci authentication endpoint.
+  sources:
+  - openapi/prosci-change-management-openapi.yml
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: API key provided by Prosci for application access.
+  sources:
+  - openapi/prosci-change-management-openapi.yml
