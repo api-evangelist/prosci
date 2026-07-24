@@ -1,0 +1,287 @@
+openapi: 3.1.0
+info:
+  title: Prosci Change Management ADKAR Assessments Risk Assessment API
+  description: API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.
+  version: 1.0.0
+  contact:
+    name: Prosci Support
+    email: support@prosci.com
+    url: https://www.prosci.com/contact
+  license:
+    name: Proprietary
+    url: https://www.prosci.com/terms
+  termsOfService: https://www.prosci.com/terms
+servers:
+- url: https://api.prosci.com/v1
+  description: Production server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Risk Assessment
+  description: Assess and manage change risk
+paths:
+  /projects/{projectId}/risk-assessment:
+    get:
+      operationId: getRiskAssessment
+      summary: Prosci Get project risk assessment
+      description: Retrieves the change risk assessment for a project, including organizational attributes, change characteristics, and overall risk profile.
+      tags:
+      - Risk Assessment
+      parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+      responses:
+        '200':
+          description: The project risk assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskAssessment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateRiskAssessment
+      summary: Prosci Update project risk assessment
+      description: Creates or updates the change risk assessment for a project.
+      tags:
+      - Risk Assessment
+      parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskAssessmentCreate'
+      responses:
+        '200':
+          description: Risk assessment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    RiskAssessmentCreate:
+      type: object
+      properties:
+        assessmentDate:
+          type: string
+          format: date
+        organizationalAttributes:
+          type: object
+          properties:
+            pastChangeSuccess:
+              type: integer
+              minimum: 1
+              maximum: 5
+            changeCapacity:
+              type: integer
+              minimum: 1
+              maximum: 5
+            culturalAlignment:
+              type: integer
+              minimum: 1
+              maximum: 5
+            executiveSponsorEngagement:
+              type: integer
+              minimum: 1
+              maximum: 5
+            middleManagementSupport:
+              type: integer
+              minimum: 1
+              maximum: 5
+        changeCharacteristics:
+          type: object
+          properties:
+            scope:
+              type: integer
+              minimum: 1
+              maximum: 5
+            complexity:
+              type: integer
+              minimum: 1
+              maximum: 5
+            timeframe:
+              type: integer
+              minimum: 1
+              maximum: 5
+            impactOnDailyWork:
+              type: integer
+              minimum: 1
+              maximum: 5
+            jobLossRisk:
+              type: integer
+              minimum: 1
+              maximum: 5
+        mitigationStrategies:
+          type: array
+          items:
+            type: string
+      required:
+      - assessmentDate
+    RiskAssessment:
+      type: object
+      description: Change risk assessment evaluating organizational and change characteristics that affect the likelihood of successful adoption.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the risk assessment
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        assessmentDate:
+          type: string
+          format: date
+        organizationalAttributes:
+          type: object
+          properties:
+            pastChangeSuccess:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: History of successful change in the organization
+            changeCapacity:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Current capacity to absorb additional change
+            culturalAlignment:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Alignment of organizational culture with the change
+            executiveSponsorEngagement:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Level of active sponsorship from executives
+            middleManagementSupport:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Level of support from middle management
+        changeCharacteristics:
+          type: object
+          properties:
+            scope:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Breadth of the change across the organization
+            complexity:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Complexity of the change
+            timeframe:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Aggressiveness of the timeline
+            impactOnDailyWork:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Degree of change to daily work processes
+            jobLossRisk:
+              type: integer
+              minimum: 1
+              maximum: 5
+              description: Perceived risk of job loss
+        overallRiskScore:
+          type: number
+          format: float
+          description: Calculated overall risk score
+        riskLevel:
+          type: string
+          enum:
+          - low
+          - moderate
+          - high
+          - critical
+          description: Categorized risk level
+        mitigationStrategies:
+          type: array
+          items:
+            type: string
+          description: Recommended risk mitigation strategies
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - projectId
+      - assessmentDate
+      - riskLevel
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          description: Detailed validation errors
+      required:
+      - code
+      - message
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained from the Prosci authentication endpoint.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key provided by Prosci for application access.

@@ -1,0 +1,372 @@
+openapi: 3.1.0
+info:
+  title: Prosci Change Management ADKAR Assessments API
+  description: API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.
+  version: 1.0.0
+  contact:
+    name: Prosci Support
+    email: support@prosci.com
+    url: https://www.prosci.com/contact
+  license:
+    name: Proprietary
+    url: https://www.prosci.com/terms
+  termsOfService: https://www.prosci.com/terms
+servers:
+- url: https://api.prosci.com/v1
+  description: Production server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: ADKAR Assessments
+  description: Assess individual and group change readiness using Prosci's ADKAR Model
+paths:
+  /projects/{projectId}/adkar-assessments:
+    get:
+      operationId: listAdkarAssessments
+      summary: Prosci List ADKAR assessments
+      description: Retrieves ADKAR assessments for a specific project. ADKAR stands for Awareness, Desire, Knowledge, Ability, and Reinforcement.
+      tags:
+      - ADKAR Assessments
+      parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      - name: stakeholderId
+        in: query
+        description: Filter assessments by stakeholder identifier
+        schema:
+          type: string
+      - name: groupId
+        in: query
+        description: Filter assessments by impacted group identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of ADKAR assessments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AdkarAssessment'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createAdkarAssessment
+      summary: Prosci Create an ADKAR assessment
+      description: Creates a new ADKAR assessment for a project, evaluating an individual or group across the five ADKAR dimensions.
+      tags:
+      - ADKAR Assessments
+      parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdkarAssessmentCreate'
+      responses:
+        '201':
+          description: ADKAR assessment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdkarAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /projects/{projectId}/adkar-assessments/{assessmentId}:
+    get:
+      operationId: getAdkarAssessment
+      summary: Prosci Get an ADKAR assessment
+      description: Retrieves a specific ADKAR assessment by identifier.
+      tags:
+      - ADKAR Assessments
+      parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+      - $ref: '#/components/parameters/assessmentIdParam'
+      responses:
+        '200':
+          description: The requested ADKAR assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdkarAssessment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateAdkarAssessment
+      summary: Prosci Update an ADKAR assessment
+      description: Updates an existing ADKAR assessment.
+      tags:
+      - ADKAR Assessments
+      parameters:
+      - $ref: '#/components/parameters/projectIdParam'
+      - $ref: '#/components/parameters/assessmentIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdkarAssessmentCreate'
+      responses:
+        '200':
+          description: ADKAR assessment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdkarAssessment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    assessmentIdParam:
+      name: assessmentId
+      in: path
+      required: true
+      description: Unique identifier for the assessment
+      schema:
+        type: string
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+  schemas:
+    AdkarDimensionInput:
+      type: object
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+        notes:
+          type: string
+      required:
+      - score
+    AdkarDimension:
+      type: object
+      description: Score and details for a single ADKAR dimension
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Score from 1 (low) to 5 (high)
+        notes:
+          type: string
+          description: Qualitative notes for this dimension
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended corrective actions
+      required:
+      - score
+    AdkarAssessment:
+      type: object
+      description: 'Assessment based on Prosci''s ADKAR Model measuring individual change readiness across five dimensions: Awareness, Desire, Knowledge, Ability, and Reinforcement.'
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the assessment
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        stakeholderId:
+          type: string
+          description: Identifier of the assessed stakeholder or group
+        stakeholderName:
+          type: string
+          description: Name of the assessed stakeholder or group
+        groupId:
+          type: string
+          description: Identifier of the impacted group
+        assessmentDate:
+          type: string
+          format: date
+          description: Date the assessment was conducted
+        awareness:
+          $ref: '#/components/schemas/AdkarDimension'
+        desire:
+          $ref: '#/components/schemas/AdkarDimension'
+        knowledge:
+          $ref: '#/components/schemas/AdkarDimension'
+        ability:
+          $ref: '#/components/schemas/AdkarDimension'
+        reinforcement:
+          $ref: '#/components/schemas/AdkarDimension'
+        overallScore:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Average score across all five ADKAR dimensions
+        barrierPoint:
+          type: string
+          enum:
+          - awareness
+          - desire
+          - knowledge
+          - ability
+          - reinforcement
+          - none
+          description: The first ADKAR element scoring below threshold, indicating the primary barrier to change adoption
+        notes:
+          type: string
+          description: Additional notes or observations
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - projectId
+      - assessmentDate
+      - awareness
+      - desire
+      - knowledge
+      - ability
+      - reinforcement
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          description: Detailed validation errors
+      required:
+      - code
+      - message
+    AdkarAssessmentCreate:
+      type: object
+      properties:
+        stakeholderId:
+          type: string
+        groupId:
+          type: string
+        assessmentDate:
+          type: string
+          format: date
+        awareness:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        desire:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        knowledge:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        ability:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        reinforcement:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        notes:
+          type: string
+      required:
+      - assessmentDate
+      - awareness
+      - desire
+      - knowledge
+      - ability
+      - reinforcement
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained from the Prosci authentication endpoint.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key provided by Prosci for application access.
