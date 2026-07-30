@@ -5,7 +5,20 @@ description: >-
   training, certification, tools, and consulting services to help organizations successfully implement change
   initiatives.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/prosci.png
 tags:
   - Change Management
   - Methodology
@@ -15,24 +28,104 @@ created: '2024-01-20'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: prosci:prosci
-    name: Prosci Change Management
-    description: >-
-      API for managing organizational change initiatives using Prosci's research-based change management methodology.
-      Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder
-      analyses, change plans, and training resources.
-    humanURL: https://www.prosci.com/
-    baseURL: https://api.prosci.com/v1
-    tags:
-      - Change Management
-      - ADKAR
-      - Methodology
-      - Training
-    properties:
-      - type: Documentation
-        url: https://www.prosci.com/resources
-      - type: OpenAPI
-        url: openapi/prosci-change-management-openapi.yml
+- aid: prosci:prosci-adkar-assessments-api
+  name: Prosci ADKAR Assessments API
+  description: Assess individual and group change readiness using Prosci's ADKAR Model
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - ADKAR Assessments
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-adkar-assessments-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-change-plans-api
+  name: Prosci Change Plans API
+  description: >-
+    Create and manage change plans including communications, sponsorship, coaching, training, and resistance
+    management
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - Change Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-change-plans-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-organizations-api
+  name: Prosci Organizations API
+  description: Organization-level change management maturity
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-pct-assessments-api
+  name: Prosci PCT Assessments API
+  description: Evaluate change initiative health using the Prosci Change Triangle
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - PCT Assessments
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-pct-assessments-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-projects-api
+  name: Prosci Projects API
+  description: Manage change management projects
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-projects-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-risk-assessment-api
+  name: Prosci Risk Assessment API
+  description: Assess and manage change risk
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - Risk Assessment
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-risk-assessment-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-stakeholders-api
+  name: Prosci Stakeholders API
+  description: Manage stakeholders and impacted groups
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - Stakeholders
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-stakeholders-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
+- aid: prosci:prosci-training-api
+  name: Prosci Training API
+  description: Training programs and enrollment management
+  humanURL: https://www.prosci.com/
+  baseURL: https://api.prosci.com/v1
+  tags:
+  - Training
+  properties:
+  - type: OpenAPI
+    url: openapi/prosci-training-api-openapi.yml
+  - type: Documentation
+    url: https://www.prosci.com/resources
 common:
   - type: AgenticAccess
     url: agentic-access/prosci-agentic-access.yml
