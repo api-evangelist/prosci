@@ -1,0 +1,28 @@
+{
+  "provider": "prosci",
+  "sources": [
+    "prosci-adkar-assessments-api-openapi.yml",
+    "prosci-change-plans-api-openapi.yml",
+    "prosci-organizations-api-openapi.yml",
+    "prosci-pct-assessments-api-openapi.yml",
+    "prosci-projects-api-openapi.yml",
+    "prosci-risk-assessment-api-openapi.yml",
+    "prosci-stakeholders-api-openapi.yml",
+    "prosci-training-api-openapi.yml"
+  ],
+  "outputs": [
+    "prosci-adkar-assessments-api-openapi.yml",
+    "prosci-change-plans-api-openapi.yml",
+    "prosci-organizations-api-openapi.yml",
+    "prosci-pct-assessments-api-openapi.yml",
+    "prosci-projects-api-openapi.yml",
+    "prosci-risk-assessment-api-openapi.yml",
+    "prosci-stakeholders-api-openapi.yml",
+    "prosci-training-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
