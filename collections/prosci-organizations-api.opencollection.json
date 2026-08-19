@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosci Change Management ADKAR Assessments Organizations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci Get change management maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/organizations/:organizationId/maturity",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the organization"
+              }
+            ]
+          },
+          "docs": "Retrieves the organization's change management maturity assessment, based on Prosci's Change Management Maturity Model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

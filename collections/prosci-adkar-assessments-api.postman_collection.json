@@ -1,0 +1,1201 @@
+{
+  "item": [
+    {
+      "id": "2baae435-b044-4a5c-8c48-0dc275ab0683",
+      "name": "ADKAR Assessments",
+      "description": {
+        "content": "Assess individual and group change readiness using Prosci's ADKAR Model",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78d8a24b-3f15-453e-b46c-2601264c8671",
+          "name": "Prosci List ADKAR assessments",
+          "request": {
+            "name": "Prosci List ADKAR assessments",
+            "description": {
+              "content": "Retrieves ADKAR assessments for a specific project. ADKAR stands for Awareness, Desire, Knowledge, Ability, and Reinforcement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "adkar-assessments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "stakeholderId",
+                  "value": "<string>",
+                  "description": "Filter assessments by stakeholder identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "<string>",
+                  "description": "Filter assessments by impacted group identifier"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "945da4f4-84ba-464e-ae41-8f38dea83457",
+              "name": "A paginated list of ADKAR assessments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stakeholderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"projectId\": \"string\",\n      \"assessmentDate\": \"1953-12-10\",\n      \"awareness\": {\n        \"score\": 1.8653898765380434,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"desire\": {\n        \"score\": 4.904298801658692,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"knowledge\": {\n        \"score\": 2.9159878285272716,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"ability\": {\n        \"score\": 1.7155664889732725,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"reinforcement\": {\n        \"score\": 2.6953842514565682,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"stakeholderId\": \"string\",\n      \"stakeholderName\": \"string\",\n      \"groupId\": \"string\",\n      \"overallScore\": 1.179614139206663,\n      \"barrierPoint\": \"awareness\",\n      \"notes\": \"string\",\n      \"createdAt\": \"1987-02-18T06:21:29.569Z\",\n      \"updatedAt\": \"2019-12-12T04:11:57.502Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"projectId\": \"string\",\n      \"assessmentDate\": \"1962-10-10\",\n      \"awareness\": {\n        \"score\": 1.058783664208986,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"desire\": {\n        \"score\": 3.3998311870733033,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"knowledge\": {\n        \"score\": 4.002893862415844,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"ability\": {\n        \"score\": 2.630824206883569,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"reinforcement\": {\n        \"score\": 1.38281739173981,\n        \"notes\": \"string\",\n        \"actions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"stakeholderId\": \"string\",\n      \"stakeholderName\": \"string\",\n      \"groupId\": \"string\",\n      \"overallScore\": 1.6502921698351316,\n      \"barrierPoint\": \"desire\",\n      \"notes\": \"string\",\n      \"createdAt\": \"2015-09-26T21:32:14.762Z\",\n      \"updatedAt\": \"1989-08-28T20:42:40.646Z\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": 1231,\n    \"limit\": 6575,\n    \"offset\": 5709,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91c7b7b4-bbb9-4eab-ad51-3e576d0ecda1",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stakeholderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cba5abc9-5bb4-4538-a3d4-27fc4d2f63ce",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stakeholderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e7dad29-5165-4f8e-98f6-be10bcfaad2b",
+          "name": "Prosci Create an ADKAR assessment",
+          "request": {
+            "name": "Prosci Create an ADKAR assessment",
+            "description": {
+              "content": "Creates a new ADKAR assessment for a project, evaluating an individual or group across the five ADKAR dimensions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "adkar-assessments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"desire\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"ability\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"reinforcement\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01b92105-2dac-4ec9-b110-37c8ff74d21d",
+              "name": "ADKAR assessment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"assessmentDate\": \"1995-08-07\",\n  \"awareness\": {\n    \"score\": 4.444734587613107,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"desire\": {\n    \"score\": 1.0716559657544433,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"knowledge\": {\n    \"score\": 2.345444612579772,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"ability\": {\n    \"score\": 3.635973575117055,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"reinforcement\": {\n    \"score\": 1.496709250871064,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"stakeholderId\": \"string\",\n  \"stakeholderName\": \"string\",\n  \"groupId\": \"string\",\n  \"overallScore\": 2.202220481222337,\n  \"barrierPoint\": \"awareness\",\n  \"notes\": \"string\",\n  \"createdAt\": \"2020-01-20T13:58:07.349Z\",\n  \"updatedAt\": \"2025-06-13T21:10:21.357Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f4c2254-6ac9-41a5-898b-d480c06cdaa2",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "343d5e88-93c4-4d7c-a4eb-1934f90563e1",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90e3d108-2193-459f-b69d-e534ce1e202d",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "375e5d12-939c-4e27-8027-bb18fdd3ef3b",
+          "name": "Prosci Get an ADKAR assessment",
+          "request": {
+            "name": "Prosci Get an ADKAR assessment",
+            "description": {
+              "content": "Retrieves a specific ADKAR assessment by identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "adkar-assessments",
+                ":assessmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assessmentId",
+                  "description": "(Required) Unique identifier for the assessment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29f977d1-1919-4f3a-8cac-4fad260f6d68",
+              "name": "The requested ADKAR assessment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"assessmentDate\": \"1995-08-07\",\n  \"awareness\": {\n    \"score\": 4.444734587613107,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"desire\": {\n    \"score\": 1.0716559657544433,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"knowledge\": {\n    \"score\": 2.345444612579772,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"ability\": {\n    \"score\": 3.635973575117055,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"reinforcement\": {\n    \"score\": 1.496709250871064,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"stakeholderId\": \"string\",\n  \"stakeholderName\": \"string\",\n  \"groupId\": \"string\",\n  \"overallScore\": 2.202220481222337,\n  \"barrierPoint\": \"awareness\",\n  \"notes\": \"string\",\n  \"createdAt\": \"2020-01-20T13:58:07.349Z\",\n  \"updatedAt\": \"2025-06-13T21:10:21.357Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a02b3825-b14e-4642-880f-0e4b825e2813",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f3d32fb-dc3f-41e8-9bac-5397f2ec2a18",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d312c1d1-057d-4ead-9276-672591ddbcc2",
+          "name": "Prosci Update an ADKAR assessment",
+          "request": {
+            "name": "Prosci Update an ADKAR assessment",
+            "description": {
+              "content": "Updates an existing ADKAR assessment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "adkar-assessments",
+                ":assessmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assessmentId",
+                  "description": "(Required) Unique identifier for the assessment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"desire\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"ability\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"reinforcement\": {\n    \"score\": \"<float>\",\n    \"notes\": \"<string>\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea0998eb-58a2-47b1-8c42-0479aeec0030",
+              "name": "ADKAR assessment updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"assessmentDate\": \"1995-08-07\",\n  \"awareness\": {\n    \"score\": 4.444734587613107,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"desire\": {\n    \"score\": 1.0716559657544433,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"knowledge\": {\n    \"score\": 2.345444612579772,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"ability\": {\n    \"score\": 3.635973575117055,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"reinforcement\": {\n    \"score\": 1.496709250871064,\n    \"notes\": \"string\",\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"stakeholderId\": \"string\",\n  \"stakeholderName\": \"string\",\n  \"groupId\": \"string\",\n  \"overallScore\": 2.202220481222337,\n  \"barrierPoint\": \"awareness\",\n  \"notes\": \"string\",\n  \"createdAt\": \"2020-01-20T13:58:07.349Z\",\n  \"updatedAt\": \"2025-06-13T21:10:21.357Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20ee97df-dc8a-4c90-b60e-1c9de6330343",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e6df8e2-6222-4918-a41d-517b80078f42",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "752334ee-0a1e-4332-af12-9c80e3032276",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "adkar-assessments",
+                    ":assessmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessmentId",
+                      "description": "(Required) Unique identifier for the assessment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"awareness\": {\n    \"score\": 4.033996756400434,\n    \"notes\": \"string\"\n  },\n  \"desire\": {\n    \"score\": 2.8477457268020085,\n    \"notes\": \"string\"\n  },\n  \"knowledge\": {\n    \"score\": 1.6923670060398472,\n    \"notes\": \"string\"\n  },\n  \"ability\": {\n    \"score\": 4.768575083620599,\n    \"notes\": \"string\"\n  },\n  \"reinforcement\": {\n    \"score\": 2.9102671715720487,\n    \"notes\": \"string\"\n  },\n  \"stakeholderId\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prosci.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab6eeaf7-3b36-4339-ad02-601374c3dc05",
+    "name": "Prosci Change Management ADKAR Assessments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.\n\nContact Support:\n Name: Prosci Support\n Email: support@prosci.com",
+      "type": "text/plain"
+    }
+  }
+}

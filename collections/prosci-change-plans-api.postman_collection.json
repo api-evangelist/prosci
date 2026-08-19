@@ -1,0 +1,1183 @@
+{
+  "item": [
+    {
+      "id": "b229a0f1-013e-4f5f-b82b-94d4ff763576",
+      "name": "Change Plans",
+      "description": {
+        "content": "Create and manage change plans including communications, sponsorship, coaching, training, and resistance management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c691afa-5186-4dd3-a4a4-d3627f08261d",
+          "name": "Prosci List change plans",
+          "request": {
+            "name": "Prosci List change plans",
+            "description": {
+              "content": "Retrieves change management plans for a project, including communications, sponsorship, coaching, training, and resistance management plans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "change-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "planType",
+                  "value": "<string>",
+                  "description": "Filter by plan type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1328911d-5d16-4a07-9f7f-e54a59a4f202",
+              "name": "A paginated list of change plans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "planType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"projectId\": \"string\",\n      \"planType\": \"communications\",\n      \"title\": \"string\",\n      \"status\": \"draft\",\n      \"description\": \"string\",\n      \"targetAudience\": [\n        \"string\",\n        \"string\"\n      ],\n      \"activities\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"status\": \"completed\",\n          \"description\": \"string\",\n          \"dueDate\": \"1997-07-28\",\n          \"assignee\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"status\": \"completed\",\n          \"description\": \"string\",\n          \"dueDate\": \"1956-07-15\",\n          \"assignee\": \"string\"\n        }\n      ],\n      \"owner\": \"string\",\n      \"startDate\": \"1965-07-18\",\n      \"endDate\": \"2003-12-23\",\n      \"createdAt\": \"1983-11-26T20:06:48.787Z\",\n      \"updatedAt\": \"1961-11-05T14:26:03.084Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"projectId\": \"string\",\n      \"planType\": \"training\",\n      \"title\": \"string\",\n      \"status\": \"draft\",\n      \"description\": \"string\",\n      \"targetAudience\": [\n        \"string\",\n        \"string\"\n      ],\n      \"activities\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"status\": \"in-progress\",\n          \"description\": \"string\",\n          \"dueDate\": \"1994-06-17\",\n          \"assignee\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"status\": \"in-progress\",\n          \"description\": \"string\",\n          \"dueDate\": \"2019-12-16\",\n          \"assignee\": \"string\"\n        }\n      ],\n      \"owner\": \"string\",\n      \"startDate\": \"1976-04-25\",\n      \"endDate\": \"1954-11-02\",\n      \"createdAt\": \"2014-10-16T03:37:37.726Z\",\n      \"updatedAt\": \"2020-06-10T05:46:34.375Z\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": 4381,\n    \"limit\": 8341,\n    \"offset\": 146,\n    \"hasMore\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8352317-4cf3-44e1-9245-cb1e67ed6af9",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "planType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82bb5fcf-ae4d-448f-873f-b55497061fc2",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "planType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89feb6fd-0b1f-4273-89dc-0c93ae7d5b31",
+          "name": "Prosci Create a change plan",
+          "request": {
+            "name": "Prosci Create a change plan",
+            "description": {
+              "content": "Creates a new change management plan for a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "change-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"assignee\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"assignee\": \"<string>\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c63dd1c6-44e1-48e2-a8b8-4be785b40895",
+              "name": "Change plan created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"planType\": \"resistance-management\",\n  \"title\": \"string\",\n  \"status\": \"in-progress\",\n  \"description\": \"string\",\n  \"targetAudience\": [\n    \"string\",\n    \"string\"\n  ],\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"pending\",\n      \"description\": \"string\",\n      \"dueDate\": \"2011-10-16\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"cancelled\",\n      \"description\": \"string\",\n      \"dueDate\": \"1985-12-12\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"string\",\n  \"startDate\": \"1948-04-13\",\n  \"endDate\": \"1956-09-25\",\n  \"createdAt\": \"2000-08-11T12:52:09.543Z\",\n  \"updatedAt\": \"1965-02-21T01:07:08.179Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbe78e2b-8a3a-499c-9f30-9d329180897c",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e73f15a1-1dad-483e-b583-01b3eff31f16",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34e912c1-2a96-4600-854b-cc7236cc68d2",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2186ac4-52be-4939-bfba-8fb9c9f37f62",
+          "name": "Prosci Get a change plan",
+          "request": {
+            "name": "Prosci Get a change plan",
+            "description": {
+              "content": "Retrieves a specific change management plan by identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "change-plans",
+                ":planId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planId",
+                  "description": "(Required) Unique identifier for the change plan"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91437455-2caa-44ca-966a-17518273bba1",
+              "name": "The requested change plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"planType\": \"resistance-management\",\n  \"title\": \"string\",\n  \"status\": \"in-progress\",\n  \"description\": \"string\",\n  \"targetAudience\": [\n    \"string\",\n    \"string\"\n  ],\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"pending\",\n      \"description\": \"string\",\n      \"dueDate\": \"2011-10-16\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"cancelled\",\n      \"description\": \"string\",\n      \"dueDate\": \"1985-12-12\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"string\",\n  \"startDate\": \"1948-04-13\",\n  \"endDate\": \"1956-09-25\",\n  \"createdAt\": \"2000-08-11T12:52:09.543Z\",\n  \"updatedAt\": \"1965-02-21T01:07:08.179Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2563f00-af43-4f4e-b744-1ce04b348473",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fc83239-0a9d-4076-bea8-24a9d1d70f90",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c288e117-77f8-493c-84b6-61059aaaad26",
+          "name": "Prosci Update a change plan",
+          "request": {
+            "name": "Prosci Update a change plan",
+            "description": {
+              "content": "Updates an existing change management plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "change-plans",
+                ":planId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planId",
+                  "description": "(Required) Unique identifier for the change plan"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"assignee\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"assignee\": \"<string>\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9e8fdaa-b260-4e7a-b3a7-40bf154aa9bc",
+              "name": "Change plan updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"planType\": \"resistance-management\",\n  \"title\": \"string\",\n  \"status\": \"in-progress\",\n  \"description\": \"string\",\n  \"targetAudience\": [\n    \"string\",\n    \"string\"\n  ],\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"pending\",\n      \"description\": \"string\",\n      \"dueDate\": \"2011-10-16\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"cancelled\",\n      \"description\": \"string\",\n      \"dueDate\": \"1985-12-12\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"string\",\n  \"startDate\": \"1948-04-13\",\n  \"endDate\": \"1956-09-25\",\n  \"createdAt\": \"2000-08-11T12:52:09.543Z\",\n  \"updatedAt\": \"1965-02-21T01:07:08.179Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bdab619-fc12-4067-b34b-ad0fed5f99ff",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68f93ce9-95af-4235-b62d-1943ad8ffa32",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3adb99df-24d3-4e03-a159-f668f4f56a26",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "change-plans",
+                    ":planId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) Unique identifier for the change plan"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planType\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetAudience\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"activities\": [\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"1953-04-12\",\n      \"assignee\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"dueDate\": \"2008-11-02\",\n      \"assignee\": \"string\"\n    }\n  ],\n  \"owner\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prosci.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "69faae13-d371-45c0-8efe-917c84f60ac0",
+    "name": "Prosci Change Management ADKAR Assessments Change Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.\n\nContact Support:\n Name: Prosci Support\n Email: support@prosci.com",
+      "type": "text/plain"
+    }
+  }
+}

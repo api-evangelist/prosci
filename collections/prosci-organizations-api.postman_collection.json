@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "cef25fc1-3f05-4eda-b1c7-7f244a76f638",
+      "name": "Organizations",
+      "description": {
+        "content": "Organization-level change management maturity",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c22c61e5-bcc4-4a9f-b1e0-2f5f8ea3b715",
+          "name": "Prosci Get change management maturity",
+          "request": {
+            "name": "Prosci Get change management maturity",
+            "description": {
+              "content": "Retrieves the organization's change management maturity assessment, based on Prosci's Change Management Maturity Model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "maturity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) Unique identifier for the organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a3b3075-e451-4403-839c-df45ae6c9d56",
+              "name": "The organization maturity assessment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "maturity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) Unique identifier for the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"organizationId\": \"string\",\n  \"assessmentDate\": \"1978-03-18\",\n  \"overallLevel\": 1,\n  \"leadershipCompetency\": {\n    \"level\": 1,\n    \"description\": \"string\",\n    \"gaps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"applicationCompetency\": {\n    \"level\": 1,\n    \"description\": \"string\",\n    \"gaps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"competencyDevelopment\": {\n    \"level\": 2,\n    \"description\": \"string\",\n    \"gaps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"standardization\": {\n    \"level\": 1,\n    \"description\": \"string\",\n    \"gaps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"socialization\": {\n    \"level\": 1,\n    \"description\": \"string\",\n    \"gaps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"actions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recommendations\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"2020-03-30T07:18:43.084Z\",\n  \"updatedAt\": \"2006-01-24T17:23:34.749Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "417458f7-324c-45f9-8827-52f472a3a3a7",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "maturity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) Unique identifier for the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20dc5594-c2bc-4e15-8605-3475602212e1",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "maturity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) Unique identifier for the organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prosci.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a6345a5-351f-4edc-a8c5-5a0cf3f0ece4",
+    "name": "Prosci Change Management ADKAR Assessments Organizations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.\n\nContact Support:\n Name: Prosci Support\n Email: support@prosci.com",
+      "type": "text/plain"
+    }
+  }
+}

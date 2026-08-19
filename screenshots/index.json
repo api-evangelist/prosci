@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "prosci",
+    "captured_at": "2026-08-17T124907",
+    "source_url": "https://www.prosci.com",
+    "source_type": "Website",
+    "file": "prosci-2026-08-17T124907.png",
+    "bytes": 576300,
+    "capture": "playwright-local"
+  }
+]

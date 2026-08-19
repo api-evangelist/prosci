@@ -1,0 +1,598 @@
+{
+  "item": [
+    {
+      "id": "993af92f-cedc-4be6-baca-84996f7076e8",
+      "name": "Training",
+      "description": {
+        "content": "Training programs and enrollment management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88ae28b1-b082-44e1-adce-5868511e5488",
+          "name": "Prosci List training programs",
+          "request": {
+            "name": "Prosci List training programs",
+            "description": {
+              "content": "Retrieves available Prosci training and certification programs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "training",
+                "programs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Filter by delivery format"
+                },
+                {
+                  "disabled": false,
+                  "key": "programType",
+                  "value": "<string>",
+                  "description": "Filter by program type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7409669c-25b2-410c-b5ed-69e4b43aa85c",
+              "name": "A paginated list of training programs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "programs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "programType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"programType\": \"train-the-trainer\",\n      \"format\": \"virtual\",\n      \"description\": \"string\",\n      \"durationDays\": 8043,\n      \"certificationLevel\": \"certified-instructor\",\n      \"prerequisites\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"https://zXQhqwwUAWjxSIyZqAeSarYdeogKFYl.pcrmS1Kak+TjqdxprMB\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"programType\": \"executive\",\n      \"format\": \"on-demand\",\n      \"description\": \"string\",\n      \"durationDays\": 6512,\n      \"certificationLevel\": \"certified-change-practitioner\",\n      \"prerequisites\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"https://HgdaiJhoLwT.ycmfH5SNHe+knkDsg9jV3es9,,1+ItwWQf9rCgUCsNvN\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": 4101,\n    \"limit\": 5371,\n    \"offset\": 9761,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72fa03cf-fdd8-4f15-81ee-d4714722274d",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "programs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "programType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2784cf17-628e-4dd1-8b6b-09c23cd7657f",
+          "name": "Prosci List training enrollments",
+          "request": {
+            "name": "Prosci List training enrollments",
+            "description": {
+              "content": "Retrieves training enrollments for the authenticated organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "training",
+                "enrollments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by enrollment status"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74784c51-5347-4efd-8d39-1eed59607598",
+              "name": "A paginated list of enrollments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"programId\": \"string\",\n      \"participantId\": \"string\",\n      \"status\": \"in-progress\",\n      \"programName\": \"string\",\n      \"participantName\": \"string\",\n      \"participantEmail\": \"uRlsYVO-Ncse-51@I.wjc\",\n      \"enrollmentDate\": \"1992-08-22\",\n      \"completionDate\": \"1959-10-02\",\n      \"certificationId\": \"string\",\n      \"createdAt\": \"2013-07-22T06:47:19.830Z\",\n      \"updatedAt\": \"1948-01-09T14:08:01.223Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"programId\": \"string\",\n      \"participantId\": \"string\",\n      \"status\": \"cancelled\",\n      \"programName\": \"string\",\n      \"participantName\": \"string\",\n      \"participantEmail\": \"bgYIF1BP9s@vSjSMvX.lchk\",\n      \"enrollmentDate\": \"2006-12-01\",\n      \"completionDate\": \"1996-04-29\",\n      \"certificationId\": \"string\",\n      \"createdAt\": \"1959-08-23T16:04:33.216Z\",\n      \"updatedAt\": \"2023-09-27T21:35:01.572Z\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": 3087,\n    \"limit\": 9914,\n    \"offset\": 5815,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbb0274c-49eb-432b-a704-8ed17205b423",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45a7e965-3470-4f0e-9076-dd2b2ed873f0",
+          "name": "Prosci Enroll in a training program",
+          "request": {
+            "name": "Prosci Enroll in a training program",
+            "description": {
+              "content": "Creates a new enrollment in a Prosci training program.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "training",
+                "enrollments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"programId\": \"<string>\",\n  \"participantId\": \"<string>\",\n  \"participantName\": \"<string>\",\n  \"participantEmail\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "997ee317-02c2-4746-91e9-ad95f75e5140",
+              "name": "Enrollment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"programId\": \"<string>\",\n  \"participantId\": \"<string>\",\n  \"participantName\": \"<string>\",\n  \"participantEmail\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"programId\": \"string\",\n  \"participantId\": \"string\",\n  \"status\": \"in-progress\",\n  \"programName\": \"string\",\n  \"participantName\": \"string\",\n  \"participantEmail\": \"Whp-aE5X@CuQuqTjTvDxrtxhxYjEyxUHGjWuthhJc.hqa\",\n  \"enrollmentDate\": \"1988-07-28\",\n  \"completionDate\": \"1972-08-19\",\n  \"certificationId\": \"string\",\n  \"createdAt\": \"1993-09-09T17:14:30.683Z\",\n  \"updatedAt\": \"2007-07-04T00:20:10.125Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbc21790-105c-46b7-8d21-4952813878b2",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"programId\": \"<string>\",\n  \"participantId\": \"<string>\",\n  \"participantName\": \"<string>\",\n  \"participantEmail\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d046440-0f9a-4524-b31b-d2cba6741cc1",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "training",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"programId\": \"<string>\",\n  \"participantId\": \"<string>\",\n  \"participantName\": \"<string>\",\n  \"participantEmail\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prosci.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c453337c-8ca8-43bc-9c5d-a9a6fa37b359",
+    "name": "Prosci Change Management ADKAR Assessments Training API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.\n\nContact Support:\n Name: Prosci Support\n Email: support@prosci.com",
+      "type": "text/plain"
+    }
+  }
+}

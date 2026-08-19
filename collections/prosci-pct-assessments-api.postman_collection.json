@@ -1,0 +1,587 @@
+{
+  "item": [
+    {
+      "id": "b66ea9f1-d3c7-421a-a6b7-7466a68e1a3a",
+      "name": "PCT Assessments",
+      "description": {
+        "content": "Evaluate change initiative health using the Prosci Change Triangle",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02903fc2-1295-4df5-af21-17f0ed35b7e5",
+          "name": "Prosci List PCT assessments",
+          "request": {
+            "name": "Prosci List PCT assessments",
+            "description": {
+              "content": "Retrieves Prosci Change Triangle (PCT) assessments for a project, evaluating Leadership/Sponsorship, Project Management, and Change Management dimensions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "pct-assessments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6363a97a-0256-475a-b14e-95dbce99ff75",
+              "name": "A paginated list of PCT assessments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"projectId\": \"string\",\n      \"assessmentDate\": \"2004-02-12\",\n      \"leadership\": {\n        \"score\": 4.6532629811463,\n        \"status\": \"on-track\",\n        \"notes\": \"string\",\n        \"findings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"projectManagement\": {\n        \"score\": 2.609051889914888,\n        \"status\": \"off-track\",\n        \"notes\": \"string\",\n        \"findings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"changeManagement\": {\n        \"score\": 4.860303812067877,\n        \"status\": \"off-track\",\n        \"notes\": \"string\",\n        \"findings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"overallHealth\": \"at-risk\",\n      \"recommendations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"assessedBy\": \"string\",\n      \"createdAt\": \"2022-07-10T08:27:03.407Z\",\n      \"updatedAt\": \"1974-02-16T16:35:04.022Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"projectId\": \"string\",\n      \"assessmentDate\": \"1953-11-09\",\n      \"leadership\": {\n        \"score\": 1.9271951442740467,\n        \"status\": \"on-track\",\n        \"notes\": \"string\",\n        \"findings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"projectManagement\": {\n        \"score\": 2.612809558382249,\n        \"status\": \"off-track\",\n        \"notes\": \"string\",\n        \"findings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"changeManagement\": {\n        \"score\": 4.376709168217523,\n        \"status\": \"off-track\",\n        \"notes\": \"string\",\n        \"findings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"overallHealth\": \"critical\",\n      \"recommendations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"assessedBy\": \"string\",\n      \"createdAt\": \"1974-07-02T14:17:31.157Z\",\n      \"updatedAt\": \"2024-05-18T14:49:08.763Z\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": 7753,\n    \"limit\": 5238,\n    \"offset\": 2449,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dc838d3-a95c-4579-a85d-3a5c3bf7a473",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49f2ebac-ebba-4032-a7da-1afa47428327",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afc7428f-7f74-4fbe-88fb-47f70c39e136",
+          "name": "Prosci Create a PCT assessment",
+          "request": {
+            "name": "Prosci Create a PCT assessment",
+            "description": {
+              "content": "Creates a new Prosci Change Triangle assessment for a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "pct-assessments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"leadership\": {\n    \"score\": \"<float>\",\n    \"status\": \"<string>\",\n    \"notes\": \"<string>\",\n    \"findings\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"projectManagement\": {\n    \"score\": \"<float>\",\n    \"status\": \"<string>\",\n    \"notes\": \"<string>\",\n    \"findings\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"changeManagement\": {\n    \"score\": \"<float>\",\n    \"status\": \"<string>\",\n    \"notes\": \"<string>\",\n    \"findings\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"recommendations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assessedBy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "062688bb-aad7-49fc-be7b-3091b6b50be7",
+              "name": "PCT assessment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"leadership\": {\n    \"score\": 4.4435987649292645,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"projectManagement\": {\n    \"score\": 3.462407339230323,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"changeManagement\": {\n    \"score\": 1.1327181542453681,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recommendations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assessedBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"assessmentDate\": \"1951-12-16\",\n  \"leadership\": {\n    \"score\": 4.919237861564264,\n    \"status\": \"on-track\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"projectManagement\": {\n    \"score\": 2.323534281176371,\n    \"status\": \"on-track\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"changeManagement\": {\n    \"score\": 2.2427784319558004,\n    \"status\": \"off-track\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"overallHealth\": \"healthy\",\n  \"recommendations\": [\n    \"string\",\n    \"string\"\n  ],\n  \"assessedBy\": \"string\",\n  \"createdAt\": \"2012-01-04T22:52:03.854Z\",\n  \"updatedAt\": \"1979-04-05T12:38:11.089Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac2fc5dd-6fe2-4bb6-9ff3-e587a04a117c",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"leadership\": {\n    \"score\": 4.4435987649292645,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"projectManagement\": {\n    \"score\": 3.462407339230323,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"changeManagement\": {\n    \"score\": 1.1327181542453681,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recommendations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assessedBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "590bcb60-1fec-4ed7-a477-cf6f0cbfd4bf",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"leadership\": {\n    \"score\": 4.4435987649292645,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"projectManagement\": {\n    \"score\": 3.462407339230323,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"changeManagement\": {\n    \"score\": 1.1327181542453681,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recommendations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assessedBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4aed3055-5e69-471c-8dbd-70f82cc13568",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "pct-assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"leadership\": {\n    \"score\": 4.4435987649292645,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"projectManagement\": {\n    \"score\": 3.462407339230323,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"changeManagement\": {\n    \"score\": 1.1327181542453681,\n    \"status\": \"at-risk\",\n    \"notes\": \"string\",\n    \"findings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recommendations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assessedBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prosci.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "24c15abd-f84a-4adc-bcb1-8b19c00d38e3",
+    "name": "Prosci Change Management ADKAR Assessments PCT Assessments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.\n\nContact Support:\n Name: Prosci Support\n Email: support@prosci.com",
+      "type": "text/plain"
+    }
+  }
+}

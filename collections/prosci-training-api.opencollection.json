@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosci Change Management ADKAR Assessments Training API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Training",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci List training programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/training/programs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Filter by delivery format"
+              },
+              {
+                "name": "programType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by program type"
+              }
+            ]
+          },
+          "docs": "Retrieves available Prosci training and certification programs."
+        },
+        {
+          "info": {
+            "name": "Prosci List training enrollments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/training/enrollments",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by enrollment status"
+              }
+            ]
+          },
+          "docs": "Retrieves training enrollments for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Prosci Enroll in a training program",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prosci.com/v1/training/enrollments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new enrollment in a Prosci training program."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

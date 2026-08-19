@@ -1,0 +1,547 @@
+{
+  "item": [
+    {
+      "id": "b22bafb6-29bd-462a-b123-9024c5403ea0",
+      "name": "Risk Assessment",
+      "description": {
+        "content": "Assess and manage change risk",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ff07e8c-3f30-4024-8e4b-a8a557dd52fa",
+          "name": "Prosci Get project risk assessment",
+          "request": {
+            "name": "Prosci Get project risk assessment",
+            "description": {
+              "content": "Retrieves the change risk assessment for a project, including organizational attributes, change characteristics, and overall risk profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "risk-assessment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d16f511-d564-45b5-82f2-2247787d0bf6",
+              "name": "The project risk assessment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"assessmentDate\": \"1981-02-19\",\n  \"riskLevel\": \"low\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": 1,\n    \"changeCapacity\": 1,\n    \"culturalAlignment\": 2,\n    \"executiveSponsorEngagement\": 1,\n    \"middleManagementSupport\": 3\n  },\n  \"changeCharacteristics\": {\n    \"scope\": 3,\n    \"complexity\": 2,\n    \"timeframe\": 1,\n    \"impactOnDailyWork\": 3,\n    \"jobLossRisk\": 1\n  },\n  \"overallRiskScore\": 7386.46611803936,\n  \"mitigationStrategies\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"1996-09-28T19:05:24.718Z\",\n  \"updatedAt\": \"2003-03-12T16:56:47.252Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca4feaee-9beb-4cb3-a7f1-d5ad4d63130d",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f03b23f6-44f1-4ffa-a350-21049c3a9995",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d05ec3b-ae15-421c-ab9d-11e87b12dc8c",
+          "name": "Prosci Update project risk assessment",
+          "request": {
+            "name": "Prosci Update project risk assessment",
+            "description": {
+              "content": "Creates or updates the change risk assessment for a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "risk-assessment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Unique identifier for the change project"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": \"<integer>\",\n    \"changeCapacity\": \"<integer>\",\n    \"culturalAlignment\": \"<integer>\",\n    \"executiveSponsorEngagement\": \"<integer>\",\n    \"middleManagementSupport\": \"<integer>\"\n  },\n  \"changeCharacteristics\": {\n    \"scope\": \"<integer>\",\n    \"complexity\": \"<integer>\",\n    \"timeframe\": \"<integer>\",\n    \"impactOnDailyWork\": \"<integer>\",\n    \"jobLossRisk\": \"<integer>\"\n  },\n  \"mitigationStrategies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fefb4d80-f305-4758-9244-e7a0a5aea5cb",
+              "name": "Risk assessment updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": \"<integer>\",\n    \"changeCapacity\": \"<integer>\",\n    \"culturalAlignment\": \"<integer>\",\n    \"executiveSponsorEngagement\": \"<integer>\",\n    \"middleManagementSupport\": \"<integer>\"\n  },\n  \"changeCharacteristics\": {\n    \"scope\": \"<integer>\",\n    \"complexity\": \"<integer>\",\n    \"timeframe\": \"<integer>\",\n    \"impactOnDailyWork\": \"<integer>\",\n    \"jobLossRisk\": \"<integer>\"\n  },\n  \"mitigationStrategies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"projectId\": \"string\",\n  \"assessmentDate\": \"1981-02-19\",\n  \"riskLevel\": \"low\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": 1,\n    \"changeCapacity\": 1,\n    \"culturalAlignment\": 2,\n    \"executiveSponsorEngagement\": 1,\n    \"middleManagementSupport\": 3\n  },\n  \"changeCharacteristics\": {\n    \"scope\": 3,\n    \"complexity\": 2,\n    \"timeframe\": 1,\n    \"impactOnDailyWork\": 3,\n    \"jobLossRisk\": 1\n  },\n  \"overallRiskScore\": 7386.46611803936,\n  \"mitigationStrategies\": [\n    \"string\",\n    \"string\"\n  ],\n  \"createdAt\": \"1996-09-28T19:05:24.718Z\",\n  \"updatedAt\": \"2003-03-12T16:56:47.252Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75a9465a-0ca2-4a5b-b0c6-1b09c6bf0378",
+              "name": "The request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": \"<integer>\",\n    \"changeCapacity\": \"<integer>\",\n    \"culturalAlignment\": \"<integer>\",\n    \"executiveSponsorEngagement\": \"<integer>\",\n    \"middleManagementSupport\": \"<integer>\"\n  },\n  \"changeCharacteristics\": {\n    \"scope\": \"<integer>\",\n    \"complexity\": \"<integer>\",\n    \"timeframe\": \"<integer>\",\n    \"impactOnDailyWork\": \"<integer>\",\n    \"jobLossRisk\": \"<integer>\"\n  },\n  \"mitigationStrategies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ce438cd-bb76-46f8-9eca-c0c82e0b3847",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": \"<integer>\",\n    \"changeCapacity\": \"<integer>\",\n    \"culturalAlignment\": \"<integer>\",\n    \"executiveSponsorEngagement\": \"<integer>\",\n    \"middleManagementSupport\": \"<integer>\"\n  },\n  \"changeCharacteristics\": {\n    \"scope\": \"<integer>\",\n    \"complexity\": \"<integer>\",\n    \"timeframe\": \"<integer>\",\n    \"impactOnDailyWork\": \"<integer>\",\n    \"jobLossRisk\": \"<integer>\"\n  },\n  \"mitigationStrategies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9efdb73-b568-46dc-8d22-2157e7772d0f",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "risk-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Unique identifier for the change project"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assessmentDate\": \"<date>\",\n  \"organizationalAttributes\": {\n    \"pastChangeSuccess\": \"<integer>\",\n    \"changeCapacity\": \"<integer>\",\n    \"culturalAlignment\": \"<integer>\",\n    \"executiveSponsorEngagement\": \"<integer>\",\n    \"middleManagementSupport\": \"<integer>\"\n  },\n  \"changeCharacteristics\": {\n    \"scope\": \"<integer>\",\n    \"complexity\": \"<integer>\",\n    \"timeframe\": \"<integer>\",\n    \"impactOnDailyWork\": \"<integer>\",\n    \"jobLossRisk\": \"<integer>\"\n  },\n  \"mitigationStrategies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prosci.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2eea05b0-134d-4f68-9a1d-812bf310f175",
+    "name": "Prosci Change Management ADKAR Assessments Risk Assessment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.\n\nContact Support:\n Name: Prosci Support\n Email: support@prosci.com",
+      "type": "text/plain"
+    }
+  }
+}

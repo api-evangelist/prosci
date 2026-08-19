@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prosci Change Management ADKAR Assessments Risk Assessment API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Risk Assessment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prosci Get project risk assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prosci.com/v1/projects/:projectId/risk-assessment",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ]
+          },
+          "docs": "Retrieves the change risk assessment for a project, including organizational attributes, change characteristics, and overall risk profile."
+        },
+        {
+          "info": {
+            "name": "Prosci Update project risk assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prosci.com/v1/projects/:projectId/risk-assessment",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the change project"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates the change risk assessment for a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
