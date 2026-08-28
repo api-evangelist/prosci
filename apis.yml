@@ -5,6 +5,18 @@ description: >-
   training, certification, tools, and consulting services to help organizations successfully implement change
   initiatives.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -131,6 +143,9 @@ apis:
   - type: Documentation
     url: https://www.prosci.com/resources
 common:
+  - type: CapabilityMap
+    url: capabilities/prosci-capability-edges.yml
+    name: Prosci Business Capability Map
   - type: AgenticAccess
     url: agentic-access/prosci-agentic-access.yml
   - type: DomainSecurity
