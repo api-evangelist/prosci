@@ -3,8 +3,7 @@ provider: Prosci
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Banking & Capital Markets
-- Software & Technology
+- Education
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -14,66 +13,67 @@ capability_model:
   notice: NOTICE
 edge_count: 6
 edges:
+- tag: ADKAR Assessments
+  spec_file: prosci-adkar-assessments-api-openapi.yml
+  capability_id: BC-910
+  capability_id_l1: BC-910
+  capability_name: Change Management
+  confidence: 0.85
+  evidence: 'POST /projects/{projectId}/adkar-assessments ''Prosci Create an ADKAR assessment''; description:
+    ''managing organizational change initiatives using Prosci''s research-based change management methodology'''
+  reason: ADKAR assessments measure individual readiness dimensions within organisational change initiatives
+    — squarely Organisational Change Management. Left at L1 because the assessment spans awareness, adoption
+    and reinforcement rather than one named sub-capability.
 - tag: Change Plans
   spec_file: prosci-change-plans-api-openapi.yml
   capability_id: BC-910
   capability_id_l1: BC-910
   capability_name: Change Management
   confidence: 0.85
-  evidence: '''Prosci Create a change plan'', schemas ChangePlan, PlanActivity'
-  reason: Creating and maintaining change plans with activities for a change project is squarely organisational
-    change planning and execution. No single L2 fits since plans span communications, training, sponsorship
-    and adoption activities.
+  evidence: POST /projects/{projectId}/change-plans 'Prosci Create a change plan'; schemas ChangePlan,
+    PlanActivity
+  reason: Creation and maintenance of change plans and their activities for change projects — organisational
+    change planning and execution. L2 left null as plan activities can span strategy, communications/training
+    and reinforcement.
 - tag: Stakeholders
   spec_file: prosci-stakeholders-api-openapi.yml
   capability_id: BC-910.20
   capability_id_l1: BC-910
   capability_name: Change Stakeholder Engagement Management
-  confidence: 0.8
-  evidence: 'GET /projects/{projectId}/stakeholders  listStakeholders; description: "change projects,
-    ADKAR assessments, PCT ... stakeholder analyses, change plans"'
-  reason: Stakeholder registers scoped to change-management projects within Prosci's change methodology
-    — this is change stakeholder identification and engagement, not generic CRM contacts.
+  confidence: 0.85
+  evidence: GET /projects/{projectId}/stakeholders — "Prosci List stakeholders"; description mentions
+    "stakeholder analyses, change plans"
+  reason: Stakeholders are recorded against change projects and the spec explicitly frames them as change
+    stakeholder analysis, matching Change Stakeholder Engagement Management.
 - tag: PCT Assessments
   spec_file: prosci-pct-assessments-api-openapi.yml
   capability_id: BC-910
   capability_id_l1: BC-910
   capability_name: Change Management
-  confidence: 0.78
-  evidence: '''Prosci List PCT assessments'' / ''Prosci Create a PCT assessment'', PctDimension, under
-    ''PCT (Prosci Change Triangle) assessments'''
-  reason: The Prosci Change Triangle assesses health of leadership/sponsorship, project management and
-    change management on a change initiative — organisational change management. No L2 cleanly covers
-    a health assessment across those dimensions.
-- tag: Organizations
-  spec_file: prosci-organizations-api-openapi.yml
-  capability_id: BC-910
-  capability_id_l1: BC-910
-  capability_name: Change Management
-  confidence: 0.72
-  evidence: GET /organizations/{organizationId}/maturity 'Prosci Get change management maturity', schema
-    MaturityAssessment
-  reason: Assesses an organisation's change management maturity across dimensions — an organisational
-    change management capability measure. Left at L1 as maturity assessment does not match a specific
-    sub-capability.
-- tag: ADKAR Assessments
-  spec_file: prosci-adkar-assessments-api-openapi.yml
-  capability_id: BC-910.40
-  capability_id_l1: BC-910
-  capability_name: Change Adoption & Reinforcement Management
-  confidence: 0.7
-  evidence: '''Prosci Create an ADKAR assessment'' with schema AdkarDimension, under ''API for managing
-    organizational change initiatives using Prosci''s research-based change management methodology'''
-  reason: ADKAR measures individual awareness/desire/knowledge/ability/reinforcement for a change initiative
-    — organisational change adoption measurement. L1 Change Management is certain; the adoption/reinforcement
-    sub-capability is the closest but not the only possible reading.
+  confidence: 0.8
+  evidence: 'GET /projects/{projectId}/pct-assessments ''Prosci List PCT assessments''; description: ''PCT
+    (Prosci Change Triangle) assessments'''
+  reason: Prosci Change Triangle assessments evaluate health of change initiatives (sponsorship, project
+    management, change management) — organisational change management. No single L2 clearly named by the
+    evidence.
 - tag: Projects
   spec_file: prosci-projects-api-openapi.yml
   capability_id: BC-910
   capability_id_l1: BC-910
   capability_name: Change Management
+  confidence: 0.78
+  evidence: '"API for managing organizational change initiatives using Prosci''s research-based change
+    management methodology"; operations "Prosci Create a change project", "Prosci List change projects"'
+  reason: The tag manages 'change projects' — the container for organisational change initiatives — which
+    is Change Management at L1; no single L2 (strategy, stakeholders, comms, adoption) covers the project
+    record itself, so L2 abstained.
+- tag: Organizations
+  spec_file: prosci-organizations-api-openapi.yml
+  capability_id: BC-910
+  capability_id_l1: BC-910
+  capability_name: Change Management
   confidence: 0.7
-  evidence: '''Prosci List change projects'', ''Prosci Create a change project'''
-  reason: CRUD over change projects that anchor ADKAR/PCT assessments and change plans; the object is
-    explicitly a change initiative, so Change Management rather than generic project management. Some
-    overlap with BC-900.30 keeps confidence moderate.
+  evidence: GET /organizations/{organizationId}/maturity 'Prosci Get change management maturity'; schema
+    MaturityAssessment
+  reason: Single operation returning organisational change-management maturity — a change-management capability
+    assessment. Only one thin operation, hence moderate confidence and no L2.
