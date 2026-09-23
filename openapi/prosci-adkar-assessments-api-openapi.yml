@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Prosci Change Management ADKAR Assessments API
   description: API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.
@@ -137,51 +137,36 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    limitParam:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 25
-    assessmentIdParam:
-      name: assessmentId
-      in: path
-      required: true
-      description: Unique identifier for the assessment
-      schema:
-        type: string
-    offsetParam:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    projectIdParam:
-      name: projectId
-      in: path
-      required: true
-      description: Unique identifier for the change project
-      schema:
-        type: string
   schemas:
-    AdkarDimensionInput:
+    AdkarAssessmentCreate:
       type: object
       properties:
-        score:
-          type: number
-          format: float
-          minimum: 1
-          maximum: 5
+        stakeholderId:
+          type: string
+        groupId:
+          type: string
+        assessmentDate:
+          type: string
+          format: date
+        awareness:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        desire:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        knowledge:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        ability:
+          $ref: '#/components/schemas/AdkarDimensionInput'
+        reinforcement:
+          $ref: '#/components/schemas/AdkarDimensionInput'
         notes:
           type: string
       required:
-      - score
+      - assessmentDate
+      - awareness
+      - desire
+      - knowledge
+      - ability
+      - reinforcement
     AdkarDimension:
       type: object
       description: Score and details for a single ADKAR dimension
@@ -202,6 +187,60 @@ components:
           description: Recommended corrective actions
       required:
       - score
+    AdkarDimensionInput:
+      type: object
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+        notes:
+          type: string
+      required:
+      - score
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          description: Detailed validation errors
+      required:
+      - code
+      - message
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
     AdkarAssessment:
       type: object
       description: 'Assessment based on Prosci''s ADKAR Model measuring individual change readiness across five dimensions: Awareness, Desire, Knowledge, Ability, and Reinforcement.'
@@ -269,84 +308,7 @@ components:
       - knowledge
       - ability
       - reinforcement
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
-      required:
-      - total
-      - limit
-      - offset
-      - hasMore
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          description: Detailed validation errors
-      required:
-      - code
-      - message
-    AdkarAssessmentCreate:
-      type: object
-      properties:
-        stakeholderId:
-          type: string
-        groupId:
-          type: string
-        assessmentDate:
-          type: string
-          format: date
-        awareness:
-          $ref: '#/components/schemas/AdkarDimensionInput'
-        desire:
-          $ref: '#/components/schemas/AdkarDimensionInput'
-        knowledge:
-          $ref: '#/components/schemas/AdkarDimensionInput'
-        ability:
-          $ref: '#/components/schemas/AdkarDimensionInput'
-        reinforcement:
-          $ref: '#/components/schemas/AdkarDimensionInput'
-        notes:
-          type: string
-      required:
-      - assessmentDate
-      - awareness
-      - desire
-      - knowledge
-      - ability
-      - reinforcement
   responses:
-    BadRequest:
-      description: The request was invalid or malformed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials are missing or invalid
       content:
@@ -359,6 +321,44 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    assessmentIdParam:
+      name: assessmentId
+      in: path
+      required: true
+      description: Unique identifier for the assessment
+      schema:
+        type: string
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
   securitySchemes:
     bearerAuth:
       type: http

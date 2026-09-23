@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Prosci Change Management ADKAR Assessments Organizations API
+  title: Prosci Change Management Organizations API
   description: API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.
   version: 1.0.0
   contact:
@@ -47,43 +47,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    MaturityDimension:
-      type: object
-      properties:
-        level:
-          type: integer
-          minimum: 1
-          maximum: 5
-          description: Maturity level for this dimension
-        description:
-          type: string
-          description: Description of current state
-        gaps:
-          type: array
-          items:
-            type: string
-          description: Identified gaps
-        actions:
-          type: array
-          items:
-            type: string
-          description: Recommended actions
-      required:
-      - level
     MaturityAssessment:
       type: object
       description: Assessment of an organization's change management maturity across five capability areas based on Prosci's Change Management Maturity Model.
@@ -150,6 +114,42 @@ components:
       required:
       - code
       - message
+    MaturityDimension:
+      type: object
+      properties:
+        level:
+          type: integer
+          minimum: 1
+          maximum: 5
+          description: Maturity level for this dimension
+        description:
+          type: string
+          description: Description of current state
+        gaps:
+          type: array
+          items:
+            type: string
+          description: Identified gaps
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended actions
+      required:
+      - level
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
