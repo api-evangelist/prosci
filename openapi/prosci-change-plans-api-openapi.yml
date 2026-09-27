@@ -138,38 +138,39 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    planIdParam:
+      name: planId
+      in: path
+      required: true
+      description: Unique identifier for the change plan
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
   schemas:
-    PlanActivity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the activity
-        title:
-          type: string
-          description: Title of the activity
-        description:
-          type: string
-          description: Description of the activity
-        dueDate:
-          type: string
-          format: date
-          description: Due date for the activity
-        status:
-          type: string
-          enum:
-          - pending
-          - in-progress
-          - completed
-          - cancelled
-          description: Current status
-        assignee:
-          type: string
-          description: Person assigned to this activity
-      required:
-      - id
-      - title
-      - status
     ChangePlanCreate:
       type: object
       properties:
@@ -218,6 +219,26 @@ components:
           type: string
       required:
       - title
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
     Error:
       type: object
       properties:
@@ -240,6 +261,37 @@ components:
       required:
       - code
       - message
+    PlanActivity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the activity
+        title:
+          type: string
+          description: Title of the activity
+        description:
+          type: string
+          description: Description of the activity
+        dueDate:
+          type: string
+          format: date
+          description: Due date for the activity
+        status:
+          type: string
+          enum:
+          - pending
+          - in-progress
+          - completed
+          - cancelled
+          description: Current status
+        assignee:
+          type: string
+          description: Person assigned to this activity
+      required:
+      - id
+      - title
+      - status
     ChangePlan:
       type: object
       description: A change management plan aligned with Prosci's methodology, covering key plan types for successful change adoption.
@@ -304,35 +356,15 @@ components:
       - planType
       - title
       - status
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
-      required:
-      - total
-      - limit
-      - offset
-      - hasMore
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
       content:
         application/json:
           schema:
@@ -343,38 +375,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    planIdParam:
-      name: planId
-      in: path
-      required: true
-      description: Unique identifier for the change plan
-      schema:
-        type: string
-    projectIdParam:
-      name: projectId
-      in: path
-      required: true
-      description: Unique identifier for the change project
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 25
-    offsetParam:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
   securitySchemes:
     bearerAuth:
       type: http

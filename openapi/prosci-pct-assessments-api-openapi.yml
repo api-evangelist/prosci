@@ -79,29 +79,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    PctAssessmentCreate:
-      type: object
-      properties:
-        assessmentDate:
-          type: string
-          format: date
-        leadership:
-          $ref: '#/components/schemas/PctDimensionInput'
-        projectManagement:
-          $ref: '#/components/schemas/PctDimensionInput'
-        changeManagement:
-          $ref: '#/components/schemas/PctDimensionInput'
-        recommendations:
-          type: array
-          items:
-            type: string
-        assessedBy:
-          type: string
-      required:
-      - assessmentDate
-      - leadership
-      - projectManagement
-      - changeManagement
     PctDimension:
       type: object
       description: Score and details for a single PCT dimension
@@ -130,50 +107,45 @@ components:
       required:
       - score
       - status
-    PctAssessment:
+    Pagination:
       type: object
-      description: 'Assessment based on the Prosci Change Triangle (PCT) Model evaluating three critical aspects of change success: Leadership/Sponsorship, Project Management, and Change Management.'
       properties:
-        id:
-          type: string
-          description: Unique identifier for the assessment
-        projectId:
-          type: string
-          description: Identifier of the associated project
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
+    PctAssessmentCreate:
+      type: object
+      properties:
         assessmentDate:
           type: string
           format: date
-          description: Date the assessment was conducted
         leadership:
-          $ref: '#/components/schemas/PctDimension'
+          $ref: '#/components/schemas/PctDimensionInput'
         projectManagement:
-          $ref: '#/components/schemas/PctDimension'
+          $ref: '#/components/schemas/PctDimensionInput'
         changeManagement:
-          $ref: '#/components/schemas/PctDimension'
-        overallHealth:
-          type: string
-          enum:
-          - healthy
-          - at-risk
-          - critical
-          description: Overall health of the change initiative
+          $ref: '#/components/schemas/PctDimensionInput'
         recommendations:
           type: array
           items:
             type: string
-          description: Recommended actions based on the assessment
         assessedBy:
           type: string
-          description: Name of the person who conducted the assessment
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
       required:
-      - id
-      - projectId
       - assessmentDate
       - leadership
       - projectManagement
@@ -223,33 +195,55 @@ components:
       required:
       - code
       - message
-    Pagination:
+    PctAssessment:
       type: object
+      description: 'Assessment based on the Prosci Change Triangle (PCT) Model evaluating three critical aspects of change success: Leadership/Sponsorship, Project Management, and Change Management.'
       properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
+        id:
+          type: string
+          description: Unique identifier for the assessment
+        projectId:
+          type: string
+          description: Identifier of the associated project
+        assessmentDate:
+          type: string
+          format: date
+          description: Date the assessment was conducted
+        leadership:
+          $ref: '#/components/schemas/PctDimension'
+        projectManagement:
+          $ref: '#/components/schemas/PctDimension'
+        changeManagement:
+          $ref: '#/components/schemas/PctDimension'
+        overallHealth:
+          type: string
+          enum:
+          - healthy
+          - at-risk
+          - critical
+          description: Overall health of the change initiative
+        recommendations:
+          type: array
+          items:
+            type: string
+          description: Recommended actions based on the assessment
+        assessedBy:
+          type: string
+          description: Name of the person who conducted the assessment
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       required:
-      - total
-      - limit
-      - offset
-      - hasMore
+      - id
+      - projectId
+      - assessmentDate
+      - leadership
+      - projectManagement
+      - changeManagement
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found
       content:
@@ -262,14 +256,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    projectIdParam:
-      name: projectId
-      in: path
-      required: true
-      description: Unique identifier for the change project
-      schema:
-        type: string
     limitParam:
       name: limit
       in: query
@@ -279,6 +272,13 @@ components:
         minimum: 1
         maximum: 100
         default: 25
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
     offsetParam:
       name: offset
       in: query
