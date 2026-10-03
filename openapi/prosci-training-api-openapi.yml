@@ -127,99 +127,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    TrainingProgram:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the program
-        name:
-          type: string
-          description: Name of the training program
-        description:
-          type: string
-          description: Description of the program
-        programType:
-          type: string
-          enum:
-          - certification
-          - practitioner
-          - executive
-          - train-the-trainer
-          description: Type of training program
-        format:
-          type: string
-          enum:
-          - in-person
-          - virtual
-          - on-demand
-          description: Delivery format
-        durationDays:
-          type: integer
-          description: Duration of the program in days
-        certificationLevel:
-          type: string
-          enum:
-          - certified-change-practitioner
-          - certified-change-management-professional
-          - certified-instructor
-          description: Certification level awarded upon completion
-        prerequisites:
-          type: array
-          items:
-            type: string
-          description: Prerequisites for enrollment
-        url:
-          type: string
-          format: uri
-          description: URL for more information
-      required:
-      - id
-      - name
-      - programType
-      - format
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
-      required:
-      - total
-      - limit
-      - offset
-      - hasMore
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          description: Detailed validation errors
-      required:
-      - code
-      - message
     Enrollment:
       type: object
       properties:
@@ -272,6 +179,99 @@ components:
       - programId
       - participantId
       - status
+    TrainingProgram:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the program
+        name:
+          type: string
+          description: Name of the training program
+        description:
+          type: string
+          description: Description of the program
+        programType:
+          type: string
+          enum:
+          - certification
+          - practitioner
+          - executive
+          - train-the-trainer
+          description: Type of training program
+        format:
+          type: string
+          enum:
+          - in-person
+          - virtual
+          - on-demand
+          description: Delivery format
+        durationDays:
+          type: integer
+          description: Duration of the program in days
+        certificationLevel:
+          type: string
+          enum:
+          - certified-change-practitioner
+          - certified-change-management-professional
+          - certified-instructor
+          description: Certification level awarded upon completion
+        prerequisites:
+          type: array
+          items:
+            type: string
+          description: Prerequisites for enrollment
+        url:
+          type: string
+          format: uri
+          description: URL for more information
+      required:
+      - id
+      - name
+      - programType
+      - format
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          description: Detailed validation errors
+      required:
+      - code
+      - message
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
     EnrollmentCreate:
       type: object
       properties:
@@ -287,6 +287,24 @@ components:
       required:
       - programId
       - participantId
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
   responses:
     BadRequest:
       description: The request was invalid or malformed
@@ -300,24 +318,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    limitParam:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 25
-    offsetParam:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
   securitySchemes:
     bearerAuth:
       type: http

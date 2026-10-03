@@ -153,47 +153,56 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    projectIdParam:
-      name: projectId
-      in: path
-      required: true
-      description: Unique identifier for the change project
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 25
-    offsetParam:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
+  responses:
+    UnprocessableEntity:
+      description: The request was well-formed but contained semantic errors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Too many requests - rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    ProjectUpdate:
+    ProjectCreate:
       type: object
       properties:
         name:
           type: string
+          description: Name of the change project
         description:
           type: string
-        status:
+          description: Detailed description of the change initiative
+        changeType:
           type: string
           enum:
-          - planning
-          - active
-          - completed
-          - on-hold
-          - cancelled
+          - process
+          - technology
+          - organizational
+          - cultural
+          - merger-acquisition
+          - strategic
         scope:
           type: string
           enum:
@@ -207,29 +216,15 @@ components:
           type: string
         impactedEmployeeCount:
           type: integer
+        startDate:
+          type: string
+          format: date
         targetCompletionDate:
           type: string
           format: date
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
       required:
-      - total
-      - limit
-      - offset
-      - hasMore
+      - name
+      - changeType
     Project:
       type: object
       properties:
@@ -316,24 +311,21 @@ components:
       - name
       - status
       - changeType
-    ProjectCreate:
+    ProjectUpdate:
       type: object
       properties:
         name:
           type: string
-          description: Name of the change project
         description:
           type: string
-          description: Detailed description of the change initiative
-        changeType:
+        status:
           type: string
           enum:
-          - process
-          - technology
-          - organizational
-          - cultural
-          - merger-acquisition
-          - strategic
+          - planning
+          - active
+          - completed
+          - on-hold
+          - cancelled
         scope:
           type: string
           enum:
@@ -347,15 +339,9 @@ components:
           type: string
         impactedEmployeeCount:
           type: integer
-        startDate:
-          type: string
-          format: date
         targetCompletionDate:
           type: string
           format: date
-      required:
-      - name
-      - changeType
     Error:
       type: object
       properties:
@@ -378,37 +364,51 @@ components:
       required:
       - code
       - message
-  responses:
-    UnprocessableEntity:
-      description: The request was well-formed but contained semantic errors
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid or malformed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Too many requests - rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

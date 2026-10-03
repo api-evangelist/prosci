@@ -47,20 +47,30 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    MaturityDimension:
+      type: object
+      properties:
+        level:
+          type: integer
+          minimum: 1
+          maximum: 5
+          description: Maturity level for this dimension
+        description:
+          type: string
+          description: Description of current state
+        gaps:
+          type: array
+          items:
+            type: string
+          description: Identified gaps
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended actions
+      required:
+      - level
     Error:
       type: object
       properties:
@@ -127,29 +137,19 @@ components:
       - organizationId
       - assessmentDate
       - overallLevel
-    MaturityDimension:
-      type: object
-      properties:
-        level:
-          type: integer
-          minimum: 1
-          maximum: 5
-          description: Maturity level for this dimension
-        description:
-          type: string
-          description: Description of current state
-        gaps:
-          type: array
-          items:
-            type: string
-          description: Identified gaps
-        actions:
-          type: array
-          items:
-            type: string
-          description: Recommended actions
-      required:
-      - level
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
