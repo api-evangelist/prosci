@@ -48,6 +48,50 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    MaturityAssessment:
+      type: object
+      description: Assessment of an organization's change management maturity across five capability areas based on Prosci's Change Management Maturity Model.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the maturity assessment
+        organizationId:
+          type: string
+          description: Identifier of the organization
+        assessmentDate:
+          type: string
+          format: date
+        overallLevel:
+          type: integer
+          minimum: 1
+          maximum: 5
+          description: Overall maturity level from 1 (ad hoc) to 5 (organizational competency)
+        leadershipCompetency:
+          $ref: '#/components/schemas/MaturityDimension'
+        applicationCompetency:
+          $ref: '#/components/schemas/MaturityDimension'
+        competencyDevelopment:
+          $ref: '#/components/schemas/MaturityDimension'
+        standardization:
+          $ref: '#/components/schemas/MaturityDimension'
+        socialization:
+          $ref: '#/components/schemas/MaturityDimension'
+        recommendations:
+          type: array
+          items:
+            type: string
+          description: Recommendations for advancing maturity
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - organizationId
+      - assessmentDate
+      - overallLevel
     MaturityDimension:
       type: object
       properties:
@@ -93,59 +137,15 @@ components:
       required:
       - code
       - message
-    MaturityAssessment:
-      type: object
-      description: Assessment of an organization's change management maturity across five capability areas based on Prosci's Change Management Maturity Model.
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the maturity assessment
-        organizationId:
-          type: string
-          description: Identifier of the organization
-        assessmentDate:
-          type: string
-          format: date
-        overallLevel:
-          type: integer
-          minimum: 1
-          maximum: 5
-          description: Overall maturity level from 1 (ad hoc) to 5 (organizational competency)
-        leadershipCompetency:
-          $ref: '#/components/schemas/MaturityDimension'
-        applicationCompetency:
-          $ref: '#/components/schemas/MaturityDimension'
-        competencyDevelopment:
-          $ref: '#/components/schemas/MaturityDimension'
-        standardization:
-          $ref: '#/components/schemas/MaturityDimension'
-        socialization:
-          $ref: '#/components/schemas/MaturityDimension'
-        recommendations:
-          type: array
-          items:
-            type: string
-          description: Recommendations for advancing maturity
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-      - id
-      - organizationId
-      - assessmentDate
-      - overallLevel
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
       content:
         application/json:
           schema:

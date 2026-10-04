@@ -137,7 +137,48 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+    assessmentIdParam:
+      name: assessmentId
+      in: path
+      required: true
+      description: Unique identifier for the assessment
+      schema:
+        type: string
     limitParam:
       name: limit
       in: query
@@ -147,49 +188,7 @@ components:
         minimum: 1
         maximum: 100
         default: 25
-    offsetParam:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    assessmentIdParam:
-      name: assessmentId
-      in: path
-      required: true
-      description: Unique identifier for the assessment
-      schema:
-        type: string
-    projectIdParam:
-      name: projectId
-      in: path
-      required: true
-      description: Unique identifier for the change project
-      schema:
-        type: string
   schemas:
-    AdkarDimension:
-      type: object
-      description: Score and details for a single ADKAR dimension
-      properties:
-        score:
-          type: number
-          format: float
-          minimum: 1
-          maximum: 5
-          description: Score from 1 (low) to 5 (high)
-        notes:
-          type: string
-          description: Qualitative notes for this dimension
-        actions:
-          type: array
-          items:
-            type: string
-          description: Recommended corrective actions
-      required:
-      - score
     AdkarAssessment:
       type: object
       description: 'Assessment based on Prosci''s ADKAR Model measuring individual change readiness across five dimensions: Awareness, Desire, Knowledge, Ability, and Reinforcement.'
@@ -257,28 +256,26 @@ components:
       - knowledge
       - ability
       - reinforcement
-    Error:
+    Pagination:
       type: object
       properties:
-        code:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          description: Detailed validation errors
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
       required:
-      - code
-      - message
+      - total
+      - limit
+      - offset
+      - hasMore
     AdkarAssessmentCreate:
       type: object
       properties:
@@ -308,26 +305,6 @@ components:
       - knowledge
       - ability
       - reinforcement
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
-      required:
-      - total
-      - limit
-      - offset
-      - hasMore
     AdkarDimensionInput:
       type: object
       properties:
@@ -340,25 +317,48 @@ components:
           type: string
       required:
       - score
-  responses:
-    BadRequest:
-      description: The request was invalid or malformed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    AdkarDimension:
+      type: object
+      description: Score and details for a single ADKAR dimension
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Score from 1 (low) to 5 (high)
+        notes:
+          type: string
+          description: Qualitative notes for this dimension
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended corrective actions
+      required:
+      - score
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          description: Detailed validation errors
+      required:
+      - code
+      - message
   securitySchemes:
     bearerAuth:
       type: http
