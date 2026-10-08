@@ -144,6 +144,12 @@ apis:
   - type: Documentation
     url: https://www.prosci.com/resources
 common:
+  - type: Plans
+    url: plans/prosci-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/prosci-rate-limits.yml
+  - type: FinOps
+    url: finops/prosci-finops.yml
   - type: CapabilityMap
     url: capabilities/prosci-capability-edges.yml
     name: Prosci Business Capability Map
