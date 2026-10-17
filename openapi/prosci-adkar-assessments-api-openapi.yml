@@ -144,50 +144,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials are missing or invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    offsetParam:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    projectIdParam:
-      name: projectId
-      in: path
-      required: true
-      description: Unique identifier for the change project
-      schema:
-        type: string
-    assessmentIdParam:
-      name: assessmentId
-      in: path
-      required: true
-      description: Unique identifier for the assessment
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 25
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     AdkarAssessment:
       type: object
@@ -256,26 +224,38 @@ components:
       - knowledge
       - ability
       - reinforcement
-    Pagination:
+    AdkarDimension:
+      type: object
+      description: Score and details for a single ADKAR dimension
+      properties:
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+          description: Score from 1 (low) to 5 (high)
+        notes:
+          type: string
+          description: Qualitative notes for this dimension
+        actions:
+          type: array
+          items:
+            type: string
+          description: Recommended corrective actions
+      required:
+      - score
+    AdkarDimensionInput:
       type: object
       properties:
-        total:
-          type: integer
-          description: Total number of items
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Current offset
-        hasMore:
-          type: boolean
-          description: Whether more items are available
+        score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 5
+        notes:
+          type: string
       required:
-      - total
-      - limit
-      - offset
-      - hasMore
+      - score
     AdkarAssessmentCreate:
       type: object
       properties:
@@ -305,38 +285,26 @@ components:
       - knowledge
       - ability
       - reinforcement
-    AdkarDimensionInput:
+    Pagination:
       type: object
       properties:
-        score:
-          type: number
-          format: float
-          minimum: 1
-          maximum: 5
-        notes:
-          type: string
+        total:
+          type: integer
+          description: Total number of items
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Current offset
+        hasMore:
+          type: boolean
+          description: Whether more items are available
       required:
-      - score
-    AdkarDimension:
-      type: object
-      description: Score and details for a single ADKAR dimension
-      properties:
-        score:
-          type: number
-          format: float
-          minimum: 1
-          maximum: 5
-          description: Score from 1 (low) to 5 (high)
-        notes:
-          type: string
-          description: Qualitative notes for this dimension
-        actions:
-          type: array
-          items:
-            type: string
-          description: Recommended corrective actions
-      required:
-      - score
+      - total
+      - limit
+      - offset
+      - hasMore
     Error:
       type: object
       properties:
@@ -359,6 +327,38 @@ components:
       required:
       - code
       - message
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    assessmentIdParam:
+      name: assessmentId
+      in: path
+      required: true
+      description: Unique identifier for the assessment
+      schema:
+        type: string
+    projectIdParam:
+      name: projectId
+      in: path
+      required: true
+      description: Unique identifier for the change project
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
   securitySchemes:
     bearerAuth:
       type: http

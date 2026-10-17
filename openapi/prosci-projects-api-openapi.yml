@@ -160,14 +160,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: The request was well-formed but contained semantic errors
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
       content:
         application/json:
           schema:
@@ -178,8 +172,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+    UnprocessableEntity:
+      description: The request was well-formed but contained semantic errors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
       content:
         application/json:
           schema:
@@ -210,24 +210,21 @@ components:
         maximum: 100
         default: 25
   schemas:
-    ProjectCreate:
+    ProjectUpdate:
       type: object
       properties:
         name:
           type: string
-          description: Name of the change project
         description:
           type: string
-          description: Detailed description of the change initiative
-        changeType:
+        status:
           type: string
           enum:
-          - process
-          - technology
-          - organizational
-          - cultural
-          - merger-acquisition
-          - strategic
+          - planning
+          - active
+          - completed
+          - on-hold
+          - cancelled
         scope:
           type: string
           enum:
@@ -241,15 +238,9 @@ components:
           type: string
         impactedEmployeeCount:
           type: integer
-        startDate:
-          type: string
-          format: date
         targetCompletionDate:
           type: string
           format: date
-      required:
-      - name
-      - changeType
     Project:
       type: object
       properties:
@@ -336,37 +327,6 @@ components:
       - name
       - status
       - changeType
-    ProjectUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        status:
-          type: string
-          enum:
-          - planning
-          - active
-          - completed
-          - on-hold
-          - cancelled
-        scope:
-          type: string
-          enum:
-          - department
-          - division
-          - organization
-          - enterprise
-        sponsorId:
-          type: string
-        changeManagerId:
-          type: string
-        impactedEmployeeCount:
-          type: integer
-        targetCompletionDate:
-          type: string
-          format: date
     Pagination:
       type: object
       properties:
@@ -387,6 +347,46 @@ components:
       - limit
       - offset
       - hasMore
+    ProjectCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the change project
+        description:
+          type: string
+          description: Detailed description of the change initiative
+        changeType:
+          type: string
+          enum:
+          - process
+          - technology
+          - organizational
+          - cultural
+          - merger-acquisition
+          - strategic
+        scope:
+          type: string
+          enum:
+          - department
+          - division
+          - organization
+          - enterprise
+        sponsorId:
+          type: string
+        changeManagerId:
+          type: string
+        impactedEmployeeCount:
+          type: integer
+        startDate:
+          type: string
+          format: date
+        targetCompletionDate:
+          type: string
+          format: date
+      required:
+      - name
+      - changeType
     Error:
       type: object
       properties:
