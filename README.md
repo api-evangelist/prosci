@@ -1,4 +1,4 @@
-# Prosci (prosci)
+# Prosci
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,55 +66,149 @@
 
 Prosci is a global leader in change management research, methodology, and solutions. They provide change management training, certification, tools, and consulting services to help organizations successfully implement change initiatives.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/prosci/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/prosci/refs/heads/main/apis.yml)
+**Areas:** Change Management · Methodology · Training
 
-## Scope
+## Prosci on APIs.io
 
-- **Type:** Index
+Everything profiled for Prosci is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/prosci/](https://apis.io/providers/prosci/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Change Management
-- Methodology
-- Training
+- [Prosci ADKAR Assessments API](https://apis.io/apis/prosci/prosci-adkar-assessments-api/) — Assess individual and group change readiness using Prosci's ADKAR Model
+- [Prosci Change Plans API](https://apis.io/apis/prosci/prosci-change-plans-api/) — Create and manage change plans including communications, sponsorship, coaching, training, and resistance management
+- [Prosci Organizations API](https://apis.io/apis/prosci/prosci-organizations-api/) — Organization-level change management maturity
+- [Prosci PCT Assessments API](https://apis.io/apis/prosci/prosci-pct-assessments-api/) — Evaluate change initiative health using the Prosci Change Triangle
+- [Prosci Projects API](https://apis.io/apis/prosci/prosci-projects-api/) — Manage change management projects
+- [Prosci Risk Assessment API](https://apis.io/apis/prosci/prosci-risk-assessment-api/) — Assess and manage change risk
+- [Prosci Stakeholders API](https://apis.io/apis/prosci/prosci-stakeholders-api/) — Manage stakeholders and impacted groups
+- [Prosci Training API](https://apis.io/apis/prosci/prosci-training-api/) — Training programs and enrollment management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-20
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Prosci Change Management
+Which operations an agent can call, which act, and which need a human in the loop.
 
-API for managing organizational change initiatives using Prosci's research-based change management methodology. Provides access to change projects, ADKAR assessments, PCT (Prosci Change Triangle) assessments, stakeholder analyses, change plans, and training resources.
+- [Prosci Agentic Access](https://apis.io/agentic-access/prosci/prosci-agentic-access/)
 
-- **Human URL:** [https://www.prosci.com/](https://www.prosci.com/)
-- **Base URL:** `https://api.prosci.com/v1`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Change Management
-- ADKAR
-- Methodology
-- Training
+- [Prosci ADKAR Assessment](https://apis.io/schemas/prosci/prosci-adkar-assessment/)
+- [Prosci Change Project](https://apis.io/schemas/prosci/prosci-change-project/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://www.prosci.com/resources)
-- [OpenAPI](openapi/prosci-change-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/prosci-change-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/prosci-change-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-## Common Properties
+- [Prosci Context](https://apis.io/jsonld/prosci/prosci-context/)
 
-- [LinkedIn](https://www.linkedin.com/company/prosci)
-- [Blog](https://www.prosci.com/blog)
-- [Terms of Service](https://www.prosci.com/terms)
-- [Privacy Policy](https://www.prosci.com/privacy)
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Prosci Change Management ADKAR Assessments API](https://apis.io/collections/prosci/open-prosci-adkar-assessments-api/)
+- [Prosci Change Management API](https://apis.io/collections/prosci/open-prosci-change-management/)
+- [Prosci Change Management ADKAR Assessments Change Plans API](https://apis.io/collections/prosci/open-prosci-change-plans-api/)
+- [Prosci Change Management ADKAR Assessments Organizations API](https://apis.io/collections/prosci/open-prosci-organizations-api/)
+- [Prosci Change Management ADKAR Assessments PCT Assessments API](https://apis.io/collections/prosci/open-prosci-pct-assessments-api/)
+- [Prosci Change Management ADKAR Assessments Projects API](https://apis.io/collections/prosci/open-prosci-projects-api/)
+- [Prosci Change Management ADKAR Assessments Risk Assessment API](https://apis.io/collections/prosci/open-prosci-risk-assessment-api/)
+- [Prosci Change Management ADKAR Assessments Stakeholders API](https://apis.io/collections/prosci/open-prosci-stakeholders-api/)
+- [Prosci Change Management ADKAR Assessments Training API](https://apis.io/collections/prosci/open-prosci-training-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Prosci — jsonschema rules](https://apis.io/rules/prosci/prosci-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Prosci Authentication](https://apis.io/security/prosci/prosci-authentication/)
+- [Prosci Domain Security](https://apis.io/security/prosci/prosci-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Prosci Plans Pricing](https://apis.io/plans/prosci/prosci-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Prosci Rate Limits](https://apis.io/rate-limits/prosci/prosci-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Prosci Finops](https://apis.io/finops/prosci/prosci-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.prosci.com)
+- [Blog](https://www.prosci.com/blog)
+- [Terms of service](https://www.prosci.com/terms)
+- [Privacy policy](https://www.prosci.com/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 60.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 18.4 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/prosci/](https://apis.io/providers/prosci/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Prosci: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/prosci/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
